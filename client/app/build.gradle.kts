@@ -8,6 +8,12 @@ plugins {
     kotlin("plugin.spring") version "1.3.50"
 }
 
+//project {
+//    name =
+//}
+
+//name "app"
+
 group = "au.com.mebank.client"
 version = "0.0.1"
 
@@ -21,6 +27,8 @@ repositories {
 
 dependencies {
 
+    implementation(project(":service:sal"))
+    implementation(project(":service:model"))
 
 //    implementation("au.com.mebank.demo.service:sal:+")
 //    implementation("au.com.mebank.demo.service:model:+")

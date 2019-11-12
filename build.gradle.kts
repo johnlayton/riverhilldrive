@@ -6,9 +6,8 @@ plugins {
 
 allprojects {
 
-    group = "au.com.mebank.demo"
-
-    version = "1.0"
+//    group = "au.com.mebank.demo"
+//    version = "1.0"
 
     repositories {
 //        jcenter()

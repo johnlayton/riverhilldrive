@@ -1,9 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    java
-    publishing
-    `maven-publish`
+    id("java")
+    id("publishing")
+    id("maven-publish")
     kotlin("jvm")
 }
 

@@ -14,6 +14,5 @@ class DemoRouter(private val handler: DemoHandler) {
     @Bean
     fun route() = router {
         POST("/demo", handler::sayHello)
-//        GET("/demo") { _ -> ServerResponse.ok().body(fromObject(arrayOf(1, 2, 3))) }
     }
 }

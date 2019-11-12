@@ -1,11 +1,19 @@
 package au.com.mebank.service
 
+import org.springframework.stereotype.Component
+import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Mono
 
-class DemoWebClient : DemoClient {
+@Component
+class DemoWebClient(address: String) : DemoClient {
 
-  override fun sayHello(request: DemoRequest): Mono<DemoResponse> {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-  }
+    val client = WebClient.builder().baseUrl(address).build();
+
+    override fun sayHello(request: DemoRequest): Mono<DemoResponse> {
+        return client.post()
+                .bodyValue(request)
+                .retrieve()
+                .bodyToMono(DemoResponse::class.java)
+    }
 
 }

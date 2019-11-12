@@ -1,4 +1,4 @@
-pluginManagement{
+pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenLocal()
@@ -17,14 +17,15 @@ pluginManagement{
 //    }
 }
 
-rootProject.name = "riverhilldrive"
+//rootProject.name = "riverhilldrive"
 
 include(
-    "service:app",
-    "service:model",
-    "service:sal",
-
-    "client:app"
+        "service:model",
+        "service:sal",
+        "service:app",
+//"service",
+        "client:app"
+//        "client:app"
 //    "spring-client:app",
 //    "spring-client:model",
 //    "spring-client:sal"
