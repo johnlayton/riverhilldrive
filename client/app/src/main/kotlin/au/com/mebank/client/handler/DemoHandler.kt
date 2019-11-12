@@ -16,20 +16,17 @@ class DemoHandler(private val client: WebClient) {
 
   fun sayHello(request: ServerRequest): Mono<ServerResponse> {
 
-    return request.bodyToMono(InputRequest::class.java).flatMap { request ->
+    return request.bodyToMono(InputRequest::class.java).flatMap {
 
       client.post()
           .contentType(MediaType.APPLICATION_JSON)
-          .bodyValue(request)
+          .bodyValue(it)
           .retrieve()
           .bodyToMono(InputResponse::class.java)
-          .map { response ->
-
+          .flatMap { response ->
+            ServerResponse.ok().body(fromValue(InputResponse(response.id, response.name)))
           }
 
-      ServerResponse.ok().body(fromValue(InputResponse(it.id, it.name)))
     }
   }
-}
-
 }
