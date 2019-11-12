@@ -1,0 +1,8 @@
+spring.profiles.active: local
+server:
+  port: 8082
+  ssl:
+    enabled: false # Uses self-signed certificate because no key-store configuration is specified.
+
+service:
+  address: http://localhost:8082

@@ -13,7 +13,7 @@ class DemoHandler {
 
   fun sayHello(request: ServerRequest): Mono<ServerResponse> {
     return request.bodyToMono(DemoRequest::class.java).flatMap { it ->
-      ServerResponse.ok().body(fromValue(DemoResponse(it.id, it.name)))
+      ServerResponse.ok().body(fromValue(DemoResponse(it.id, it.name + " - demo")))
     }
   }
 

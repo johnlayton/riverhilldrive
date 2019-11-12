@@ -8,13 +8,13 @@ pluginManagement{
     // The resolutionStrategy only needs to be configured for
     // local plugin development, specifically when using the
     // mavenLocal repository.
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.id == "com.google.protobuf") {
-                useModule("com.google.protobuf:protobuf-gradle-plugin:${requested.version}")
-            }
-        }
-    }
+//    resolutionStrategy {
+//        eachPlugin {
+//            if (requested.id.id == "com.google.protobuf") {
+//                useModule("com.google.protobuf:protobuf-gradle-plugin:${requested.version}")
+//            }
+//        }
+//    }
 }
 
 rootProject.name = "riverhilldrive"
@@ -22,7 +22,9 @@ rootProject.name = "riverhilldrive"
 include(
     "service:app",
     "service:model",
-    "service:sal"
+    "service:sal",
+
+    "client:app"
 //    "spring-client:app",
 //    "spring-client:model",
 //    "spring-client:sal"
