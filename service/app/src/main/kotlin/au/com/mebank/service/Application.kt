@@ -7,6 +7,12 @@ import org.springframework.boot.runApplication
 @SpringBootApplication
 class Application {
     private val log = LoggerFactory.getLogger(Application::class.java)
+
+    init {
+
+        log.info("Application Started")
+
+    }
 }
 
 fun main(args: Array<String>) {

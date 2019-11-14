@@ -26,12 +26,12 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":service:model"))
 
     compileOnly ("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
 //    implementation("org.springframework.boot:spring-boot-starter-web")
 
-    implementation(project(":service:model"))
 //    implementation("au.com.mebank.demo.service:model:+")
 
     implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -43,6 +43,11 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
+
+    testImplementation("com.github.JensPiegsa:wiremock-extension:0.4.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.5.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.5.2")
     testImplementation("io.projectreactor:reactor-test")
 }
 

@@ -13,6 +13,7 @@ allprojects {
 //        jcenter()
         mavenLocal()
         mavenCentral()
+        maven("https://jitpack.io")
 //        gradlePluginPortal()
 ////        maven("https://plugins.gradle.org/m2/")
     }

@@ -4,3 +4,9 @@ server:
   ssl:
     enabled: false # Uses self-signed certificate because no key-store configuration is specified.
 
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    au.com.mebank.service: DEBUG
+    au.com.mebank.service.handler: DEBUG

@@ -6,3 +6,10 @@ server:
 
 service:
   address: http://localhost:8091/demo
+
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    au.com.mebank.client: DEBUG
+    au.com.mebank.client.handler: DEBUG
