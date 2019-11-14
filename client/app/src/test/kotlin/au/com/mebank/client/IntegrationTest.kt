@@ -1,5 +1,6 @@
 package au.com.mebank.client
 
+import au.com.mebank.client.model.InputResponse
 import com.github.jenspiegsa.wiremockextension.ConfigureWireMock
 import com.github.jenspiegsa.wiremockextension.InjectServer
 import com.github.jenspiegsa.wiremockextension.WireMockExtension
@@ -8,6 +9,7 @@ import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.*
 import com.github.tomakehurst.wiremock.common.ConsoleNotifier
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.boot.test.context.SpringBootTest
@@ -34,8 +36,8 @@ class IntegrationTest {
 
     private val demoResponse = """
 {
-    "id"   : 1,
-    "name" : "john - mock"
+    "id"   : 2,
+    "name" : "mock"
 }                    
 """.trimIndent()
 
@@ -45,7 +47,7 @@ class IntegrationTest {
     @ConfigureWireMock
     var options = wireMockConfig()
             .port(8091)
-            .notifier(ConsoleNotifier(true))
+//            .notifier(ConsoleNotifier(true))
 //            .dynamicPort()
 
     @LocalServerPort
@@ -66,10 +68,11 @@ class IntegrationTest {
                 .body(BodyInserters.fromValue(demoRequest))
                 .exchange()
                 .flatMap {
-                    it.bodyToMono(String::class.java)
+                    it.bodyToMono(InputResponse::class.java)
                 }
                 .block()
-        println(response)
+        assertEquals(2, response!!.id)
+        assertEquals("mock", response.name)
     }
 }
 
