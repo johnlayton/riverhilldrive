@@ -12,6 +12,8 @@ plugins {
     kotlin("plugin.spring") version "1.3.50"
 
     id("com.google.cloud.tools.jib") version "1.3.0"
+
+    id("nebula.facet") version "7.0.4"
 }
 
 group = "au.com.mebank.demo.service"
@@ -27,12 +29,11 @@ repositories {
 
 dependencies {
     implementation(project(":service:model"))
+//    implementation("au.com.mebank.demo.service:model:+")
 
     compileOnly ("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
 //    implementation("org.springframework.boot:spring-boot-starter-web")
-
-//    implementation("au.com.mebank.demo.service:model:+")
 
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -49,6 +50,10 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.5.2")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.5.2")
     testImplementation("io.projectreactor:reactor-test")
+
+    testImplementation("org.testcontainers:testcontainers:1.10.6")
+    testImplementation("org.testcontainers:junit-jupiter:1.10.6")
+    testImplementation("org.testcontainers:selenium:1.10.6")
 }
 
 tasks.getByName<Jar>("jar") {
