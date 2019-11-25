@@ -1,5 +1,8 @@
 package au.com.mebank.service
 
+import org.apache.http.client.methods.HttpGet
+import org.apache.http.impl.client.HttpClientBuilder
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.testcontainers.containers.DockerComposeContainer
 import org.testcontainers.containers.wait.strategy.Wait
 import org.testcontainers.junit.jupiter.Container
@@ -17,7 +20,7 @@ class ApplicationTest {
 
     @Container
     val container : DockerComposeContainer<Nothing> = DockerComposeContainer<Nothing>("", listOf(File("src/test/resources/docker-compose.yml")))
-            .withExposedService("nginx_1", 8080, Wait.forHttp("/"))
+            .withExposedService("nginx_1", 80, Wait.forHttp("/"))
 
 
     private var host: String? = null
@@ -26,26 +29,30 @@ class ApplicationTest {
 
     @BeforeEach
     fun setup() {
-        host = container.getServiceHost("nginx_1", 8080)
-        port = container.getServicePort("nginx_1", 8080)
+        host = container.getServiceHost("nginx_1", 80)
+        port = container.getServicePort("nginx_1", 80)
     }
 
     @Test
     @Throws(Exception::class)
     fun simpleTest() {
+        val client = HttpClientBuilder.create().build()
+        val response = client.execute(HttpGet("http://$host:$port"))
 
-        val client = WebClient.builder().baseUrl("http://$host:$port").build()
-        val response = client.get()
-                .uri("/")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .body(BodyInserters.fromValue(""demoRequest""))
-                .exchange()
-//                .flatMap {
-//                    it.bodyToMono(InputResponse::class.java)
-//                }
-                .block()
+        assertEquals(200, response.getStatusLine().getStatusCode())
 
-        println(response)
+//        val client = WebClient.builder().baseUrl("http://$host:$port").build()
+//        val response = client.get()
+//                .uri("/")
+////                .contentType(MediaType.APPLICATION_JSON)
+////                .body(BodyInserters.fromValue(""demoRequest""))
+//                .exchange()
+////                .flatMap {
+////                    it.bodyToMono(InputResponse::class.java)
+////                }
+//                .block()
+//
+//        println(response)
 
 //        val client = HttpClientBuilder.create().build()
 //

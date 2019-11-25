@@ -3,8 +3,8 @@ version: '2'
 services:
   nginx:
     image: nginx
-    ports:
-      - "8080:80"
+#    ports:
+#      - "8080:80"
 #  web:
 #    image: hashicorp/http-echo
 #  redis:
