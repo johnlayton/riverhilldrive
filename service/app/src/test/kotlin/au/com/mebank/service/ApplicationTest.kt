@@ -14,13 +14,16 @@ import org.springframework.http.MediaType
 import org.springframework.web.reactive.function.BodyInserters
 import org.springframework.web.reactive.function.client.WebClient
 
+class MeDockerComposeContainer(file: File) : DockerComposeContainer<MeDockerComposeContainer>(file)
 
 @Testcontainers
 class ApplicationTest {
 
     @Container
-    val container : DockerComposeContainer<Nothing> = DockerComposeContainer<Nothing>("", listOf(File("src/test/resources/docker-compose.yml")))
+    val container : MeDockerComposeContainer =
+            MeDockerComposeContainer(File("src/test/resources/docker-compose.yml"))
             .withExposedService("nginx_1", 80, Wait.forHttp("/"))
+            .withExposedService("wiremock_1", 8080,  Wait.forHttp("/"))
 
 
     private var host: String? = null
@@ -29,8 +32,8 @@ class ApplicationTest {
 
     @BeforeEach
     fun setup() {
-        host = container.getServiceHost("nginx_1", 80)
-        port = container.getServicePort("nginx_1", 80)
+        host = container.getServiceHost("wiremock_1", 8080)
+        port = container.getServicePort("wiremock_1", 8080)
     }
 
     @Test
@@ -61,3 +64,12 @@ class ApplicationTest {
 //        assertEquals(200, response.getStatusLine().getStatusCode())
     }
 }
+
+//object DockerContainer {
+//    val instance: KDockerComposeContainer by lazy { startDockerCompose()}
+//    class KDockerComposeContainer(file: File) : DockerComposeContainer<KDockerComposeContainer>(file)
+//
+//
+//    private fun startDockerCompose() = KDockerComposeContainer(File("integrationTests/docker-compose.start-archival.yml"))
+//
+//}
