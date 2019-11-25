@@ -40,7 +40,7 @@ class ApplicationTest {
     @Throws(Exception::class)
     fun simpleTest() {
         val client = HttpClientBuilder.create().build()
-        val response = client.execute(HttpGet("http://$host:$port"))
+        val response = client.execute(HttpGet("http://$host:$port/__admin/webapp"))
 
         assertEquals(200, response.getStatusLine().getStatusCode())
 
