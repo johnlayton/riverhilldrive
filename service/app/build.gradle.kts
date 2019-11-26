@@ -13,7 +13,9 @@ plugins {
 
     id("com.google.cloud.tools.jib") version "1.3.0"
 
+/*
     id("nebula.facet") version "7.0.4"
+*/
 }
 
 group = "au.com.mebank.demo.service"
@@ -84,3 +86,10 @@ java.sourceSets.create("test-integration").java {
     srcDir("src/test-integration/kotlin")
 }
 */
+
+jib {
+    to {
+        image = "johnlayton/riverhilldrive-service"
+        credHelper = "osxkeychain"
+    }
+}
