@@ -78,3 +78,9 @@ publishing {
         }
     }
 }
+
+/*
+java.sourceSets.create("test-integration").java {
+    srcDir("src/test-integration/kotlin")
+}
+*/
