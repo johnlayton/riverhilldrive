@@ -16,6 +16,7 @@ import org.springframework.web.reactive.function.client.WebClient
 
 class MeDockerComposeContainer(file: File) : DockerComposeContainer<MeDockerComposeContainer>(file)
 
+/*
 @Testcontainers
 class ApplicationTest {
 
@@ -72,4 +73,4 @@ class ApplicationTest {
 //
 //    private fun startDockerCompose() = KDockerComposeContainer(File("integrationTests/docker-compose.start-archival.yml"))
 //
-//}
+//}*/
