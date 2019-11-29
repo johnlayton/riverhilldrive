@@ -6,6 +6,10 @@ plugins {
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
     kotlin("jvm")
     kotlin("plugin.spring") version "1.3.50"
+//    id("integration")
+//    id("au.com.mebank.integration")
+//    `au.com.mebank.integration`
+    `integration`
 }
 
 //project {
@@ -67,4 +71,8 @@ tasks.withType<KotlinCompile> {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "1.8"
     }
+}
+
+hello {
+//    message.set("I am a messgae")
 }
