@@ -15,9 +15,7 @@ class DemoHandler {
     private val log = LoggerFactory.getLogger(DemoHandler::class.java)
 
     fun sayHello(request: ServerRequest): Mono<ServerResponse> {
-
         log.info("Say Hello")
-
         return request.bodyToMono(DemoRequest::class.java).flatMap { it ->
             ServerResponse.ok().body(fromValue(DemoResponse(it.id, it.name + " - demo")))
         }.log()

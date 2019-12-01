@@ -21,13 +21,9 @@ pluginManagement {
 //rootProject.name = "riverhilldrive"
 
 include(
-        "service:model",
-        "service:sal",
-        "service:app",
-//"service",
-        "client:app"
-//        "client:app"
-//    "spring-client:app",
-//    "spring-client:model",
-//    "spring-client:sal"
+    "service:model",
+    "service:sal",
+    "service:app",
+
+    "client:app"
 )

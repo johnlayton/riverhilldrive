@@ -1,5 +1,7 @@
-package au.com.mebank.service
+package au.com.mebank.service.client
 
+import au.com.mebank.service.DemoRequest
+import au.com.mebank.service.DemoResponse
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Mono

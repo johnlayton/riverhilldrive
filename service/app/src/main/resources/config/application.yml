@@ -1,4 +1,4 @@
-spring.profiles.active: local
+#spring.profiles.active: local
 server:
   port: 8091
   ssl:
@@ -7,6 +7,9 @@ server:
 logging:
   level:
     root: ERROR
-    org.springframework.web: ERROR
+    org.springframework.web: DEBUG
     au.com.mebank.service: DEBUG
     au.com.mebank.service.handler: DEBUG
+
+cxf:
+  path: /service

@@ -2,14 +2,15 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
+    kotlin("jvm")
+    kotlin("kapt")
+    kotlin("plugin.spring") version "1.3.61"
     id("org.springframework.boot") version "2.2.0.RELEASE"
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
-    kotlin("jvm")
-    kotlin("plugin.spring") version "1.3.50"
 //    id("integration")
 //    id("au.com.mebank.integration")
 //    `au.com.mebank.integration`
-    `integration`
+    id("integration")
 }
 
 //project {
@@ -37,13 +38,16 @@ dependencies {
 //    implementation("au.com.mebank.demo.service:sal:+")
 //    implementation("au.com.mebank.demo.service:model:+")
 
-    compileOnly ("org.springframework.boot:spring-boot-configuration-processor")
+//    compileOnly ("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
+    kapt("org.springframework.boot:spring-boot-configuration-processor")
+
 //    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
 //    implementation("io.projectreactor:reactor-core:3.2.11.RELEASE")
 //    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
@@ -74,5 +78,5 @@ tasks.withType<KotlinCompile> {
 }
 
 hello {
-//    message.set("I am a messgae")
+    message.set("i go find the wsdl here ....")
 }

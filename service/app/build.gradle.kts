@@ -9,25 +9,33 @@ plugins {
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
 
     kotlin("jvm")
-    kotlin("plugin.spring") version "1.3.50"
+    kotlin("kapt")
+    kotlin("plugin.spring") version "1.3.61"
 
     id("com.google.cloud.tools.jib") version "1.3.0"
 
+    id("integration")
 /*
     id("nebula.facet") version "7.0.4"
 */
 }
 
-group = "au.com.mebank.demo.service"
+group = "au.com.mebank.service"
 version = "0.0.1"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 repositories {
     mavenCentral()
 }
+
+val apacheCXFVersion: String by project
+val javaxXmlVersion: String by project
+val sunXmlVersion: String by project
+val javaxActivation: String by project
 
 dependencies {
     implementation(project(":service:model"))
@@ -35,6 +43,7 @@ dependencies {
 
     compileOnly ("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
+    kapt ("org.springframework.boot:spring-boot-configuration-processor")
 //    implementation("org.springframework.boot:spring-boot-starter-web")
 
     implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -56,6 +65,20 @@ dependencies {
     testImplementation("org.testcontainers:testcontainers:1.10.6")
     testImplementation("org.testcontainers:junit-jupiter:1.10.6")
     testImplementation("org.testcontainers:selenium:1.10.6")
+
+//    implementation("org.apache.cxf:cxf-spring-boot-starter-jaxws:3.3.4")
+    implementation("org.apache.cxf:cxf-spring-boot-starter-jaxws:${apacheCXFVersion}")
+    compile("org.springframework.ws:spring-ws-core")
+    implementation("javax.xml.ws:jaxws-api:2.3.1")
+    implementation("javax.jws:jsr181-api:1.0-MR1")
+
+    implementation ("org.apache.cxf:cxf-rt-frontend-jaxws:${apacheCXFVersion}")
+    implementation ("org.apache.cxf:cxf-rt-features-logging:${apacheCXFVersion}")
+    compile("javax.xml.bind:jaxb-api:${javaxXmlVersion}")
+    compile("javax.xml.ws:jaxws-api:${javaxXmlVersion}")
+    compile("com.sun.xml.bind:jaxb-core:${sunXmlVersion}")
+    compile("com.sun.xml.bind:jaxb-impl:${sunXmlVersion}")
+    compile("javax.activation:activation:${javaxActivation}")
 }
 
 tasks.getByName<Jar>("jar") {

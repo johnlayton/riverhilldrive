@@ -1,7 +1,8 @@
 plugins {
     base
 //    kotlin("jvm")
-    kotlin("jvm") version "1.3.50" apply false
+    kotlin("jvm") version "1.3.61" apply false
+    kotlin("kapt") version "1.3.61" apply false
 }
 
 allprojects {

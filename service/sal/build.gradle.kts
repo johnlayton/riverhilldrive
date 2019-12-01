@@ -5,10 +5,12 @@ plugins {
     publishing
     id("maven-publish")
     kotlin("jvm")
+    kotlin("kapt")
+    kotlin("plugin.spring") version "1.3.61"
 //    id("org.springframework.boot") version "2.2.0.RELEASE"
+    id("io.spring.dependency-management") version "1.0.8.RELEASE"
+//    kotlin("plugin.spring") version "1.3.61"
 //    id("io.spring.dependency-management") version "1.0.8.RELEASE"
-//    id("com.google.cloud.tools.jib") version "1.3.0"
-//    kotlin("plugin.spring") version "1.3.50"
 }
 
 group = "au.com.mebank.demo.service"
@@ -30,6 +32,11 @@ dependencies {
 
     implementation(kotlin("stdlib"))
 
+//    optional ("org.springframework.boot:spring-boot-configuration-processor:+")
+    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor:+")
+    compileOnly ("org.springframework.boot:spring-boot-configuration-processor:+")
+    kapt("org.springframework.boot:spring-boot-configuration-processor:+")
+
     implementation("org.springframework.boot:spring-boot-starter-webflux:+")
 //    implementation("org.projectreactor:reactor-spring")
 
@@ -37,6 +44,17 @@ dependencies {
 //    implementation("org.jetbrains.kotlin:kotlin-reflect")
 //    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }
+
+//idea {
+//    module {
+//        def kaptMain = file("${project.buildDir}/generated/source/kapt/main")
+//        sourceDirs += kaptMain
+//        generatedSourceDirs += kaptMain
+//
+//        outputDir file("${project.buildDir}/classes/main")
+//        testOutputDir file("${project.buildDir}/classes/test")
+//    }
+//}
 
 tasks.withType<Test> {
     useJUnitPlatform()

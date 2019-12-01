@@ -1,11 +1,12 @@
-spring.profiles.active: local
+#spring.profiles.active: local
 server:
   port: 8092
   ssl:
     enabled: false # Uses self-signed certificate because no key-store configuration is specified.
 
-service:
-  address: http://localhost:8091/demo
+#service:
+#  address: http://localhost:8091/demo
+
 
 logging:
   level:
@@ -13,3 +14,4 @@ logging:
     org.springframework.web: ERROR
     au.com.mebank.client: DEBUG
     au.com.mebank.client.handler: DEBUG
+
