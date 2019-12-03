@@ -29,13 +29,13 @@ dependencies {
 //    implementation("au.com.mebank.demo.service:model:+")
 
     compile(project(":service:model"))
-
     implementation(kotlin("stdlib"))
 
 //    optional ("org.springframework.boot:spring-boot-configuration-processor:+")
-    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor:+")
-    compileOnly ("org.springframework.boot:spring-boot-configuration-processor:+")
+//    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor:+")
+//    compileOnly ("org.springframework.boot:spring-boot-configuration-processor:+")
     kapt("org.springframework.boot:spring-boot-configuration-processor:+")
+    implementation("org.springframework.boot:spring-boot-configuration-processor")
 
     implementation("org.springframework.boot:spring-boot-starter-webflux:+")
 //    implementation("org.projectreactor:reactor-spring")
@@ -43,6 +43,12 @@ dependencies {
 //    implementation("org.springframework.boot:spring-boot-webflux")
 //    implementation("org.jetbrains.kotlin:kotlin-reflect")
 //    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+}
+
+kapt {
+//    sources = "build/kapt/sources"
+//    generateStubs = true
+    showProcessorTimings = true
 }
 
 //idea {

@@ -3,9 +3,10 @@ server:
   port: 8092
   ssl:
     enabled: false # Uses self-signed certificate because no key-store configuration is specified.
+    client-auth:
 
-#service:
-#  address: http://localhost:8091/demo
+service:
+  address: http://localhost:8091/demo
 
 
 logging:
@@ -14,4 +15,3 @@ logging:
     org.springframework.web: ERROR
     au.com.mebank.client: DEBUG
     au.com.mebank.client.handler: DEBUG
-

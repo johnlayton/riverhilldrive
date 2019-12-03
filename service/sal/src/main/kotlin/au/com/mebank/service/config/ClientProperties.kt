@@ -21,12 +21,12 @@ import javax.validation.constraints.Pattern
 //        val address : String
 //)
 
-@ConstructorBinding
-@EnableConfigurationProperties(ClientProperties::class)
-@ConfigurationProperties(prefix = "client")
-data class ClientProperties(
-        val address: String
-)
+//@ConstructorBinding
+//@EnableConfigurationProperties(ClientProperties::class)
+//@ConfigurationProperties(prefix = "client")
+//data class ClientProperties(
+//        val address: String
+//)
 
 
 //    /**

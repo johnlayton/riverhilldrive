@@ -29,8 +29,19 @@ class ClientConfig(
 //  @Value("\${service.address}")
 //  internal var address: String? = null
 
+  data class Account(val bsb : String,
+                     val account : String)
+
   @Bean
   fun client(): DemoClient {
+
+//    val account : Account = Regex("([0-9]{6})\\-([0-9]{9})").find("foo")?.destructured?.let { (bsb, account) -> Account() } ?: Account()
+
+
+//    { (bsb, account) ->
+//      return Account(bsb, account)
+//    }
+
     return DemoWebClient(address)
   }
 
