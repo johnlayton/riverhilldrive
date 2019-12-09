@@ -35,7 +35,7 @@ dependencies {
 //    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor:+")
 //    compileOnly ("org.springframework.boot:spring-boot-configuration-processor:+")
     kapt("org.springframework.boot:spring-boot-configuration-processor:+")
-    implementation("org.springframework.boot:spring-boot-configuration-processor")
+    implementation("org.springframework.boot:spring-boot-configuration-processor:+")
 
     implementation("org.springframework.boot:spring-boot-starter-webflux:+")
 //    implementation("org.projectreactor:reactor-spring")
