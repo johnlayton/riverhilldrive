@@ -15,6 +15,9 @@ class Application {
 }
 
 fun main(args: Array<String>) {
+
+  System.getProperties()
+
   runApplication<Application>(*args) {
     setBannerMode(Banner.Mode.OFF)
   }
