@@ -2,6 +2,7 @@ package au.com.mebank.service
 
 import org.slf4j.LoggerFactory
 import org.springframework.boot.Banner
+import org.springframework.boot.WebApplicationType
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
@@ -16,5 +17,7 @@ class Application {
 fun main(args: Array<String>) {
     runApplication<Application>(*args) {
         setBannerMode(Banner.Mode.OFF)
+//        webApplicationType = WebApplicationType.REACTIVE
+        webApplicationType = WebApplicationType.SERVLET
     }
 }

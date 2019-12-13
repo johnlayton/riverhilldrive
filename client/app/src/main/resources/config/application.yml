@@ -8,8 +8,6 @@ server:
 service:
   address: http://localhost:8091/demo
 
-
-
 logging:
   level:
     root: ERROR

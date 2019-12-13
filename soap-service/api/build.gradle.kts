@@ -2,17 +2,18 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("java")
-    id("publishing")
-    id("maven-publish")
-
-    id("org.springframework.boot") version "2.2.0.RELEASE"
-    id("io.spring.dependency-management") version "1.0.8.RELEASE"
 
     kotlin("jvm")
     kotlin("kapt")
     kotlin("plugin.spring") version "1.3.61"
 
+    id("org.springframework.boot") version "2.2.0.RELEASE"
+    id("io.spring.dependency-management") version "1.0.8.RELEASE"
+
     id("com.google.cloud.tools.jib") version "1.3.0"
+
+    id("publishing")
+    id("maven-publish")
 
     id("integration")
 /*
@@ -38,12 +39,13 @@ val sunXmlVersion: String by project
 val javaxActivation: String by project
 
 dependencies {
-    implementation(project(":service:model"))
+    implementation(project(":soap-service:model"))
 //    implementation("au.com.mebank.demo.service:model:+")
 
 //    compileOnly ("org.springframework.boot:spring-boot-configuration-processor")
-//    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
-    kapt ("org.springframework.boot:spring-boot-configuration-processor")
+    kapt ("org.springframework.boot:spring-boot-configuration-processor:+")
+    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor:+")
+    implementation ("org.springframework.boot:spring-boot-configuration-processor:+")
 //    implementation("org.springframework.boot:spring-boot-starter-web")
 
     implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -74,6 +76,7 @@ dependencies {
 
     implementation ("org.apache.cxf:cxf-rt-frontend-jaxws:${apacheCXFVersion}")
     implementation ("org.apache.cxf:cxf-rt-features-logging:${apacheCXFVersion}")
+
     compile("javax.xml.bind:jaxb-api:${javaxXmlVersion}")
     compile("javax.xml.ws:jaxws-api:${javaxXmlVersion}")
     compile("com.sun.xml.bind:jaxb-core:${sunXmlVersion}")

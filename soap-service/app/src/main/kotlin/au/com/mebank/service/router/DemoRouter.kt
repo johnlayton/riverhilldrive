@@ -13,6 +13,13 @@ import reactor.core.publisher.Mono
 
 @Configuration
 class DemoRouter(private val handler: DemoHandler) {
+
+    init {
+        println("+++++++++++++++++++")
+        println("+++ here ++++++++++")
+        println("+++++++++++++++++++")
+    }
+
     @Bean
     fun route() = router {
         POST("/demo", handler::sayHello)

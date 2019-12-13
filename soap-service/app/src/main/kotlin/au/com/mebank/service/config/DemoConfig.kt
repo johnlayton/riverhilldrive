@@ -1,35 +1,56 @@
 package au.com.mebank.service.config
 
 import au.com.mebank.service.service.DemoServicePortImpl
+import org.apache.cxf.Bus
+import org.apache.cxf.bus.spring.SpringBus
+import org.apache.cxf.ext.logging.LoggingFeature
+import org.apache.cxf.jaxws.EndpointImpl
+import org.apache.cxf.transport.servlet.CXFServlet
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletPath
+import org.springframework.boot.web.servlet.ServletRegistrationBean
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-
-import javax.xml.ws.Endpoint;
-import org.apache.cxf.Bus;
-import org.apache.cxf.jaxws.EndpointImpl;
-import javax.xml.ws.soap.SOAPBinding
-import javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING
-
+import org.springframework.context.annotation.Primary
+import javax.jws.soap.SOAPBinding
+import javax.xml.ws.Endpoint
 
 
 @Configuration
 class DemoConfig
 @Autowired
 constructor(
-        val bus: Bus
+//        val bus: Bus
 ) {
 
-
-//@Configuration
-//class DemoConfig {
-//
-//    @Autowired
-//    private val bus: Bus? = null
+    @Bean
+    fun dispatcherServlet(): ServletRegistrationBean<CXFServlet?>? {
+        return ServletRegistrationBean(CXFServlet(), "/soap-api/*")
+    }
 
     @Bean
-    fun endpoint(): Endpoint {
-        val endpoint = EndpointImpl(bus, DemoServicePortImpl(), SOAPBinding.SOAP12HTTP_BINDING)
+    @Primary
+    fun dispatcherServletPathProvider(): DispatcherServletPath? {
+        return DispatcherServletPath { "" }
+    }
+
+    @Bean(name = [Bus.DEFAULT_BUS_ID])
+    fun springBus(loggingFeature: LoggingFeature?): SpringBus? {
+        val cxfBus = SpringBus()
+        cxfBus.features.add(loggingFeature)
+        return cxfBus
+    }
+
+    @Bean
+    fun loggingFeature(): LoggingFeature? {
+        val loggingFeature = LoggingFeature()
+        loggingFeature.setPrettyLogging(true)
+        return loggingFeature
+    }
+
+    @Bean
+    fun endpoint(bus: Bus): Endpoint {
+        val endpoint = EndpointImpl(bus, DemoServicePortImpl())
         endpoint.publish("/demo")
         return endpoint
     }

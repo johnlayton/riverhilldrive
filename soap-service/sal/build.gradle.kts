@@ -28,7 +28,7 @@ repositories {
 dependencies {
 //    implementation("au.com.mebank.demo.service:model:+")
 
-    compile(project(":service:model"))
+    compile(project(":soap-service:model"))
     implementation(kotlin("stdlib"))
 
 //    optional ("org.springframework.boot:spring-boot-configuration-processor:+")

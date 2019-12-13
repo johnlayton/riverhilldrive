@@ -21,9 +21,18 @@ pluginManagement {
 //rootProject.name = "riverhilldrive"
 
 include(
-    "service:model",
-    "service:sal",
-    "service:app",
+    "soap-service:model",
+    "soap-service:api",
+    "soap-service:sal",
+    "soap-service:app",
+
+    "rest-service:model",
+    "rest-service:sal",
+    "rest-service:app",
+
+    "grpc-service:model",
+    "grpc-service:sal",
+    "grpc-service:app",
 
     "client:app"
 )

@@ -29,8 +29,8 @@ class ClientConfig(
 //  @Value("\${service.address}")
 //  internal var address: String? = null
 
-  data class Account(val bsb : String,
-                     val account : String)
+//  data class Account(val bsb : String,
+//                     val account : String)
 
   @Bean
   fun client(): DemoClient {
