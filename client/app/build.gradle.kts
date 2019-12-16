@@ -11,6 +11,7 @@ plugins {
 //    id("au.com.mebank.integration")
 //    `au.com.mebank.integration`
     id("integration")
+    id("test")
 }
 
 //project {
@@ -66,9 +67,13 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.5.2")
     testImplementation("io.projectreactor:reactor-test")
 
-    testImplementation("org.testcontainers:testcontainers:1.10.6")
-    testImplementation("org.testcontainers:junit-jupiter:1.10.6")
-    testImplementation("org.testcontainers:selenium:1.10.6")
+//    testImplementation("org.testcontainers:testcontainers:1.10.6")
+//    testImplementation("org.testcontainers:junit-jupiter:1.10.6")
+//    testImplementation("org.testcontainers:selenium:1.10.6")
+//
+//    contractTestImplementation("org.testcontainers:testcontainers:1.10.6")
+//    contractTestImplementation("org.testcontainers:junit-jupiter:1.10.6")
+//    contractTestImplementation("org.testcontainers:selenium:1.10.6")
 }
 
 tasks.withType<Test> {
@@ -82,6 +87,6 @@ tasks.withType<KotlinCompile> {
     }
 }
 
-hello {
-    message.set("i go find the wsdl here ....")
-}
+//hello {
+//    message.set("i go find the wsdl here ....")
+//}

@@ -10,3 +10,22 @@ plugins {
 repositories {
     jcenter()
 }
+
+//val db by configurations.creating
+//val integTestImplementation by configurations.creating {
+//    extendsFrom(configurations["testImplementation"])
+//}
+//
+//dependencies {
+//    db("org.postgresql:postgresql")
+//    integTestImplementation("com.example:integ-test-support:1.3")
+//}
+
+gradlePlugin {
+    plugins {
+        create("test") {
+            id = "test"
+            implementationClass = "au.com.mebank.TestPlugin"
+        }
+    }
+}
