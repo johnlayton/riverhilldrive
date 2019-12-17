@@ -10,7 +10,7 @@ plugins {
 //    id("integration")
 //    id("au.com.mebank.integration")
 //    `au.com.mebank.integration`
-    id("integration")
+//    id("integration")
     id("test")
 }
 
@@ -35,10 +35,10 @@ dependencies {
 
     implementation(project(":soap-service:sal"))
     implementation(project(":soap-service:model"))
-    implementation(project(":rest-service:sal"))
-    implementation(project(":rest-service:model"))
-    implementation(project(":grpc-service:sal"))
-    implementation(project(":grpc-service:model"))
+//    implementation(project(":rest-service:sal"))
+//    implementation(project(":rest-service:model"))
+//    implementation(project(":grpc-service:sal"))
+//    implementation(project(":grpc-service:model"))
 
 //    implementation("au.com.mebank.demo.service:sal:+")
 //    implementation("au.com.mebank.demo.service:model:+")
@@ -87,6 +87,7 @@ tasks.withType<KotlinCompile> {
     }
 }
 
+//sourceSets
 //hello {
 //    message.set("i go find the wsdl here ....")
 //}
