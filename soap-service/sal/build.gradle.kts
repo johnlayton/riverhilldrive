@@ -33,9 +33,9 @@ dependencies {
 
 //    optional ("org.springframework.boot:spring-boot-configuration-processor:+")
 //    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor:+")
-//    compileOnly ("org.springframework.boot:spring-boot-configuration-processor:+")
     kapt("org.springframework.boot:spring-boot-configuration-processor:+")
-    implementation("org.springframework.boot:spring-boot-configuration-processor:+")
+//    compileOnly ("org.springframework.boot:spring-boot-configuration-processor:+")
+//    implementation("org.springframework.boot:spring-boot-configuration-processor:+")
 
     implementation("org.springframework.boot:spring-boot-starter-webflux:+")
 //    implementation("org.projectreactor:reactor-spring")
@@ -69,7 +69,7 @@ tasks.withType<Test> {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 }
 

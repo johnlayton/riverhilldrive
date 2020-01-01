@@ -14,3 +14,33 @@ logging:
     org.springframework.web: ERROR
     au.com.mebank.client: DEBUG
     au.com.mebank.client.handler: DEBUG
+
+spring:
+  banner:
+    image:
+      location: "classpath:/logo.png"
+      height: 25
+      width: 40
+
+management:
+
+  endpoint:
+    prometheus:
+      enabled: on
+    health:
+      show-details: 'always'
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /
+      path-mapping:
+        health: healthz
+        prometheus: metrics
+  server:
+    port: 8083
+
+#    prometheus:
+#      enabled: true
+
+#    include: 'info,health,prometheus'

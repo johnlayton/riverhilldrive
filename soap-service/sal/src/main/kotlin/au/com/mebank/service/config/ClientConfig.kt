@@ -17,13 +17,12 @@ import javax.validation.Valid
 //        val address: String
 //)
 //
-@ConstructorBinding
 @Configuration
-@EnableConfigurationProperties(ClientConfig::class)
-@ConfigurationProperties(prefix = "service")
-class ClientConfig(
-      @Valid private var address : String = ""
-) {
+@EnableConfigurationProperties(ClientProperties::class)
+//@ConfigurationProperties(prefix = "service")
+class ClientConfig(@Valid private val clientProperties: ClientProperties) {
+//@ConstructorBinding
+//constructor
 
 
 //  @Value("\${service.address}")
@@ -36,13 +35,11 @@ class ClientConfig(
   fun client(): DemoClient {
 
 //    val account : Account = Regex("([0-9]{6})\\-([0-9]{9})").find("foo")?.destructured?.let { (bsb, account) -> Account() } ?: Account()
-
-
 //    { (bsb, account) ->
 //      return Account(bsb, account)
 //    }
 
-    return DemoWebClient(address)
+    return DemoWebClient(clientProperties.address)
   }
 
 //  @Bean

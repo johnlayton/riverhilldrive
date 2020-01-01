@@ -2,6 +2,7 @@ package au.com.mebank.client
 
 import org.slf4j.LoggerFactory
 import org.springframework.boot.Banner
+import org.springframework.boot.WebApplicationType
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -26,6 +27,8 @@ class Application {
 
 fun main(args: Array<String>) {
   runApplication<Application>(*args) {
-    setBannerMode(Banner.Mode.OFF)
+//    setBannerMode(Banner.Mode.OFF)
+//    setBanner(Banner())/
+    webApplicationType = WebApplicationType.REACTIVE
   }
 }

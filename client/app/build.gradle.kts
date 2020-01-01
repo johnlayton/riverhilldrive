@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
+    id("idea")
     kotlin("jvm")
     kotlin("kapt")
     kotlin("plugin.spring") version "1.3.61"
@@ -45,10 +46,12 @@ dependencies {
 
 //    compileOnly ("org.springframework.boot:spring-boot-configuration-processor")
     kapt ("org.springframework.boot:spring-boot-configuration-processor:+")
-    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor:+")
-    implementation ("org.springframework.boot:spring-boot-configuration-processor:+")
+//    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor:+")
+//    implementation ("org.springframework.boot:spring-boot-configuration-processor:+")
 
 //    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("io.micrometer:micrometer-registry-prometheus")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -83,7 +86,7 @@ tasks.withType<Test> {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 }
 

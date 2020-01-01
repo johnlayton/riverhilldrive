@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Mono
 
-@Component
+//@Component
 class DemoWebClient(address: String) : DemoClient {
 
     val client = WebClient.builder().baseUrl(address).build();
