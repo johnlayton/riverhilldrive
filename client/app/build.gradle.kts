@@ -5,37 +5,14 @@ plugins {
     id("idea")
     kotlin("jvm")
     kotlin("kapt")
-    kotlin("plugin.spring") version "1.3.61"
-    id("org.springframework.boot") version "2.2.0.RELEASE"
-    id("io.spring.dependency-management") version "1.0.8.RELEASE"
-//    id("integration")
-//    id("au.com.mebank.integration")
-//    `au.com.mebank.integration`
-//    id("integration")
-    id("test")
-}
-
-//project {
-//    name =
-//}
-
-//name "app"
-
-group = "au.com.mebank.client"
-version = "0.0.1"
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-}
-
-repositories {
-    mavenCentral()
+    kotlin("plugin.spring")
+    id("org.springframework.boot")
+    id("io.spring.dependency-management")
 }
 
 dependencies {
 
-    implementation(project(":soap-service:sal"))
-    implementation(project(":soap-service:model"))
+    implementation(project(path = ":soap-service:sal"))
 //    implementation(project(":rest-service:sal"))
 //    implementation(project(":rest-service:model"))
 //    implementation(project(":grpc-service:sal"))
@@ -79,18 +56,3 @@ dependencies {
 //    contractTestImplementation("org.testcontainers:selenium:1.10.6")
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "11"
-    }
-}
-
-//sourceSets
-//hello {
-//    message.set("i go find the wsdl here ....")
-//}

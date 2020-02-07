@@ -1,6 +1,15 @@
+.java-version
+.jsenv-version
+
+## Project files
+
 .idea/
 .gradle/
 
 build/
 
-.java-version
+## Generated Code
+
+soap-service/api/src/demo/java/
+rest-service/api/src/demo/java/
+

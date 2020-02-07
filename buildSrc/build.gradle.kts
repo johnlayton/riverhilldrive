@@ -1,34 +1,10 @@
 plugins {
-//    kotlin("jvm")
-//    id("org.gradle.kotlin.kotlin-dsl") version "1.2.9"
     `kotlin-dsl`
-//    id("kotlin.kotlin-dsl")
-//    id("org.gradle.kotlin.kotlin-dsl")
-//    id("org.gradle.kotlin.kotlin-dsl") //version "1.3.3"
-//    kotlin("jvm") version "1.3.60"
 }
 
 repositories {
     jcenter()
-//    gradlePluginPortal()
 }
-
-//val db by configurations.creating
-//val integTestImplementation by configurations.creating {
-//    extendsFrom(configurations["testImplementation"])
-//}
-//
-//dependencies {
-//    db("org.postgresql:postgresql")
-//    integTestImplementation("com.example:integ-test-support:1.3")
-//}
-//dependencies {
-////    compileOnly(gradleApi())
-////    compileOnly(kotlin("jvm"))
-//    implementation(kotlin("gradle-plugin"))
-//
-////    compile("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.60")
-//}
 
 gradlePlugin {
     plugins {
@@ -37,4 +13,47 @@ gradlePlugin {
             implementationClass = "au.com.mebank.TestPlugin"
         }
     }
+    plugins {
+        register("plugin-wsdl") {
+            id = "plugin-wsdl"
+            implementationClass = "au.com.mebank.integration.WsdlPlugin"
+        }
+    }
+    plugins {
+        register("plugin-version") {
+            id = "plugin-version"
+            implementationClass = "au.com.mebank.integration.VersionPlugin"
+        }
+    }
+    plugins {
+        register("plugin-group") {
+            id = "plugin-group"
+            implementationClass = "au.com.mebank.integration.GroupPlugin"
+        }
+    }
+    plugins {
+        register("plugin-utils") {
+            id = "plugin-utils"
+            implementationClass = "au.com.mebank.integration.UtilsPlugin"
+        }
+    }
 }
+
+val testVersion : String by project
+val jgitVersion : String by project
+dependencies {
+    implementation("org.eclipse.jgit:org.eclipse.jgit:${jgitVersion}")
+
+    testImplementation(gradleApi())
+    testImplementation(gradleTestKit())
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:${testVersion}")
+}
+
+
+/*
+publishing {
+    repositories {
+        mavenLocal()
+    }
+}
+*/

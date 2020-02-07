@@ -32,7 +32,7 @@ class MeDockerComposeContainer(file: File) : DockerComposeContainer<MeDockerComp
     SpringExtension::class
 )
 //@ConfigurationPropertiesScan(
-//    "au.com.mebank.service.config"
+//    "au.com.mebank.service.app.config"
 //)
 @SpringBootTest(
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,

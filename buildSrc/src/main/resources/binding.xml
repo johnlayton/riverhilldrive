@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxws:bindings wsdlLocation="@WSDL_LOCATION@"
+  xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  version="2.1">
+  <jaxws:enableWrapperStyle>@ENABLE_WRAPPER_STYLE@</jaxws:enableWrapperStyle>
+  <jaxws:enableAsyncMapping>@ENABLE_ASYNC_MAPPING@</jaxws:enableAsyncMapping>
+  <jaxws:bindings node="wsdl:definitions/wsdl:types/xsd:schema"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:extensionBindingPrefixes="xjc">
+    <jaxb:globalBindings underscoreBinding="asWordSeparator">
+      <jaxb:javaType name="java.math.BigDecimal" xmlType="xs:float"
+        parseMethod="javax.xml.bind.DatatypeConverter.parseDecimal"
+        printMethod="javax.xml.bind.DatatypeConverter.printDecimal"/>
+      <jaxb:javaType name="java.math.BigDecimal" xmlType="xs:double"
+        parseMethod="javax.xml.bind.DatatypeConverter.parseDecimal"
+        printMethod="javax.xml.bind.DatatypeConverter.printDecimal"/>
+      <jaxb:javaType name="java.math.BigDecimal" xmlType="xsd:double"
+        parseMethod="javax.xml.bind.DatatypeConverter.parseDecimal"
+        printMethod="javax.xml.bind.DatatypeConverter.printDecimal"/>
+    </jaxb:globalBindings>
+  </jaxws:bindings>
+</jaxws:bindings>

@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  nginx:
+    image: nginx
+  wiremock:
+    image: holomekc/wiremock-gui
+
+#    ports:
+#      - "8080:80"
+#  web:
+#    image: hashicorp/http-echo
+#  redis:
+#    image: redis

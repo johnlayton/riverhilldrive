@@ -1,13 +1,12 @@
 package au.com.mebank.client
 
-import au.com.mebank.client.model.InputResponse
+import au.com.mebank.client.app.model.InputResponse
 import com.github.jenspiegsa.wiremockextension.ConfigureWireMock
 import com.github.jenspiegsa.wiremockextension.InjectServer
 import com.github.jenspiegsa.wiremockextension.WireMockExtension
 import com.github.jenspiegsa.wiremockextension.WireMockSettings
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.*
-import com.github.tomakehurst.wiremock.common.ConsoleNotifier
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

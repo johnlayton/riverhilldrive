@@ -1,12 +1,12 @@
 #spring.profiles.active: local
 server:
-  port: 8092
+  port: 9091
   ssl:
     enabled: false # Uses self-signed certificate because no key-store configuration is specified.
     client-auth:
 
 service:
-  address: http://localhost:8091/demo
+  address: http://localhost:8092/service/demo
 
 logging:
   level:
@@ -23,7 +23,6 @@ spring:
       width: 40
 
 management:
-
   endpoint:
     prometheus:
       enabled: on
@@ -44,3 +43,4 @@ management:
 #      enabled: true
 
 #    include: 'info,health,prometheus'
+
