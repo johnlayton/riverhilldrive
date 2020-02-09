@@ -37,6 +37,12 @@ gradlePlugin {
             implementationClass = "au.com.mebank.integration.UtilsPlugin"
         }
     }
+    plugins {
+        register("plugin-testing") {
+            id = "plugin-testing"
+            implementationClass = "au.com.mebank.integration.TestingPlugin"
+        }
+    }
 }
 
 val testVersion : String by project

@@ -1,8 +1,8 @@
 package au.com.mebank.client
 
-import au.com.mebank.client.model.InputResponse
-import au.com.mebank.service.config.ClientConfig
-import au.com.mebank.service.config.ClientProperties
+import au.com.mebank.client.app.model.InputResponse
+//import au.com.mebank.service.sal.config.ClientConfig
+//import au.com.mebank.service.sal.config.ClientProperties
 import com.github.tomakehurst.wiremock.client.WireMock
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach

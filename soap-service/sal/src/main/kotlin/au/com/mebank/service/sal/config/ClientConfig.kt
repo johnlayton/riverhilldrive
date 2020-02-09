@@ -1,4 +1,4 @@
-package au.com.mebank.service.app.config
+package au.com.mebank.service.sal.config
 
 import au.com.mebank.service.DemoService
 import au.com.mebank.service.sal.client.DemoClient

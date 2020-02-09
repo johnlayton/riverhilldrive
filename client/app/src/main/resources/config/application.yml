@@ -37,7 +37,7 @@ management:
         health: healthz
         prometheus: metrics
   server:
-    port: 8083
+    port: 9083
 
 #    prometheus:
 #      enabled: true

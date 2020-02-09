@@ -282,6 +282,8 @@ class WsdlPlugin : Plugin<Project> {
         extensions.create(EXTENSION_NAME, WsdlToJavaExtension::class, container(WsdlExtension::class))
 
     val wsdlToJavaToolConfiguration = configurations.create(EXTENSION_NAME + "Tools", {
+      setTransitive(true)
+      setVisible(true)
       defaultDependencies(object : Action<DependencySet> {
         override fun execute(dependencies: DependencySet) {
           dependencies.add(project.dependencies.create("org.apache.cxf:cxf-tools-wsdlto-core:${wsdlToJavaExtension.apacheCXFVersion}"))
@@ -295,6 +297,8 @@ class WsdlPlugin : Plugin<Project> {
     })
 
     val wsdlToJavaConfiguration = configurations.create(EXTENSION_NAME + "Implementation", {
+      setTransitive(true)
+      setVisible(true)
       defaultDependencies(object : Action<DependencySet> {
         override fun execute(dependencySet: DependencySet) {
           dependencySet.add(project.dependencies.create("org.apache.cxf:cxf-spring-boot-starter-jaxws:${wsdlToJavaExtension.apacheCXFVersion}"))

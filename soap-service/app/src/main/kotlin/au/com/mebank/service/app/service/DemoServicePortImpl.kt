@@ -13,7 +13,7 @@ class DemoServicePortImpl : DemoService {
 
   override fun sayHello(request: DemoRequest): DemoResponse {
     return DemoResponse(request.id,
-        "Hello, Welcome to CXF Spring boot ${request.name}!!!");
+        "Hello ${request.name}!!!");
   }
 
 }

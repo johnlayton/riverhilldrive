@@ -15,7 +15,10 @@ import org.springframework.context.annotation.ComponentScans
     "au.com.mebank.service.sal.config"
 )
 @ComponentScans(
-    ComponentScan("au.com.mebank")
+    ComponentScan("au.com.mebank.client.app.handler"),
+    ComponentScan("au.com.mebank.client.app.router"),
+    ComponentScan("au.com.mebank.service.sal"),
+    ComponentScan("au.com.mebank.service.api")
 //    ,
 //    ComponentScan("au.com.mebank.service")
 )

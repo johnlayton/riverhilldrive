@@ -16,12 +16,17 @@ import reactor.core.publisher.Mono
 class InputHandler
 @Autowired
 constructor(/*private val client: WebClient,*/
-    private val client: DemoClient
+        private val client: DemoClient
 ) {
 
-  private val log = LoggerFactory.getLogger(InputHandler::class.java)
 
-  fun sayHello(request: ServerRequest): Mono<ServerResponse> {
+    private val log = LoggerFactory.getLogger(InputHandler::class.java)
+
+    init {
+        log.info("Creating InputHandler")
+    }
+
+    fun sayHello(request: ServerRequest): Mono<ServerResponse> {
 /*
     return request.bodyToMono(InputRequest::class.java).flatMap {
       client.post()
@@ -43,23 +48,27 @@ constructor(/*private val client: WebClient,*/
             .retrieve()
             .bodyToMono(DemoResponse::class.java)
 }*/
-    log.info("Handle Input")
-    return request.bodyToMono(InputRequest::class.java)
-        .doOnNext {
-          log.info("Input request -> ${it}")
-        }
-        .map {
-          val req = DemoRequest(it.id, it.name)
-          log.info("Demo request -> ${req}")
-          req
-        }
-        .flatMap {
-          log.info("Say Hello -> $it")
-          client.sayHello(it)
-        }
-        .flatMap { response ->
-          log.info("Demo Reqponses -> ${response}")
-          ServerResponse.ok().body(fromValue(InputResponse(response.id, response.name)))
-        }
-  }
+        log.info("Handle Input")
+        return request.bodyToMono(InputRequest::class.java)
+                .doOnNext {
+                    log.info("Input request -> ${it}")
+                }
+                .map {
+                    val req = DemoRequest(it.id, it.name)
+                    log.info("Demo request -> ${req}")
+                    req
+                }
+                .flatMap {
+                    log.info("Say Hello -> $it")
+                    client.sayHello(it)
+                }
+                .map { response ->
+                    log.info("Demo Responses -> ${response}")
+                    InputResponse(response.id, response.name)
+                }
+                .flatMap { response ->
+                    log.info("Input Responses -> ${response}")
+                    ServerResponse.ok().body(fromValue(response))
+                }
+    }
 }
