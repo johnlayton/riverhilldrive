@@ -1,5 +1,6 @@
 package au.com.mebank.client.app
 
+import au.com.mebank.client.app.handler.InputHandler
 import au.com.mebank.client.app.model.InputResponse
 import com.github.jenspiegsa.wiremockextension.ConfigureWireMock
 import com.github.jenspiegsa.wiremockextension.InjectServer
@@ -7,20 +8,27 @@ import com.github.jenspiegsa.wiremockextension.WireMockExtension
 import com.github.jenspiegsa.wiremockextension.WireMockSettings
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.*
+import com.github.tomakehurst.wiremock.common.ConsoleNotifier
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig
+import com.nhaarman.mockitokotlin2.mock
+import org.apache.catalina.Server
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.http.MediaType
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.web.reactive.function.BodyInserters
 import org.springframework.web.reactive.function.client.WebClient
+import org.springframework.web.reactive.function.server.ServerRequest
+import reactor.test.StepVerifier
 
 @SpringBootTest(
-        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
+//        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
+
 )
 @ExtendWith(
         WireMockExtension::class,
@@ -85,11 +93,14 @@ class IntegrationTest {
     @ConfigureWireMock
     var options = wireMockConfig()
             .port(8092)
-//            .notifier(ConsoleNotifier(true))
+            .notifier(ConsoleNotifier(true))
 //            .dynamicPort()
 
-    @LocalServerPort
-    var randomServerPort: Int = 0
+//    @LocalServerPort
+    var randomServerPort: Int = 9091
+
+    @Autowired
+    private lateinit var inputHandler: InputHandler
 
     @Test
     fun demo() {
@@ -109,14 +120,33 @@ class IntegrationTest {
                 .body(BodyInserters.fromValue(Rest.inputRequest))
                 .exchange()
                 .flatMap {
-                    it.bodyToMono(InputResponse::class.java)
+//                    it.bodyToMono(InputResponse::class.java)
+                    it.bodyToMono(String::class.java)
                 }
-                .block()
+                .map {
+                    println(it)
+                }
+//                .block()
 
-        assertNotNull(response)
+//        StepVerifier.create(inputHandler.sayHello(mock()))
+//                .assertNext {
+//                    assertNotNull(it)
+//                }
+//                .verifyComplete()
 
-        assertEquals(1, response!!.id)
-        assertEquals("Hello john!!!", response.name)
+        StepVerifier.create(response)
+                .assertNext { it
+                    assertNotNull(it)
+                }
+                .verifyComplete()
+
+
+
+
+//        assertNotNull(response)
+//
+//        assertEquals(1, response!!.id)
+//        assertEquals("Hello john!!!", response.name)
     }
 }
 

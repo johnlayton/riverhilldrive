@@ -48,7 +48,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.5.2")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.5.2")
     testImplementation("io.projectreactor:reactor-test")
-
+    testImplementation("io.projectreactor.kotlin:reactor-kotlin-extensions:1.0.1.RELEASE")
+    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
 //    testImplementation("org.testcontainers:testcontainers:1.10.6")
 //    testImplementation("org.testcontainers:junit-jupiter:1.10.6")
 //    testImplementation("org.testcontainers:selenium:1.10.6")

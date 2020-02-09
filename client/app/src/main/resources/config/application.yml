@@ -10,10 +10,11 @@ service:
 
 logging:
   level:
-    root: ERROR
+    root: INFO
     org.springframework.web: ERROR
-    au.com.mebank.client: DEBUG
-    au.com.mebank.client.handler: DEBUG
+    au.com.mebank.client: INFO
+    au.com.mebank.client.app.handler: INFO
+    au.com.mebank.client.app.router: INFO
 
 spring:
   banner:
@@ -37,7 +38,7 @@ management:
         health: healthz
         prometheus: metrics
   server:
-    port: 9083
+    port: 9092
 
 #    prometheus:
 #      enabled: true
