@@ -12,15 +12,8 @@ plugins {
   id("plugin-version")
 }
 
-
 dependencies {
   kapt("org.springframework.boot:spring-boot-configuration-processor:+")
-/*
-  api(project(path = ":soap-service:api", configuration = "wsdlToJavaImplementation"))
-  api(project(path = ":soap-service:api", configuration = "implementation"))
-  api(project(path = ":soap-service:api", configuration = "api"))
-  api(project(path = ":soap-service:api", configuration = "implementation"))
-*/
   api(project(path = ":soap-service:api"))
 //  api("au.com.mebank.integration:api:+")
   implementation("org.springframework.boot:spring-boot-starter-webflux:+")
