@@ -8,7 +8,7 @@ import org.apache.cxf.jaxws.JaxWsProxyFactoryBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import javax.jws.soap.SOAPBinding
+import javax.xml.ws.soap.SOAPBinding
 import javax.validation.Valid
 
 //@ConstructorBinding
@@ -51,7 +51,7 @@ class ClientConfig(@Valid private val clientProperties: ClientProperties) {
     val jaxWsProxyFactoryBean = JaxWsProxyFactoryBean()
     jaxWsProxyFactoryBean.serviceClass = DemoService::class.java
     jaxWsProxyFactoryBean.address = clientProperties.address
-//    jaxWsProxyFactoryBean.bindingId = SOAPBinding.SOAP12HTTP_BINDING
+    jaxWsProxyFactoryBean.bindingId = SOAPBinding.SOAP12HTTP_BINDING
 //    jaxWsProxyFactoryBean.features.add(customSoapFeature)
 
     return jaxWsProxyFactoryBean.create() as DemoService
