@@ -36,6 +36,10 @@ gradlePlugin {
             id = "plugin-bitbucket"
             implementationClass = "au.com.mebank.integration.BitbucketPlugin"
         }
+        register("plugin-github") {
+            id = "plugin-github"
+            implementationClass = "au.com.mebank.integration.GithubPlugin"
+        }
     }
 }
 
@@ -43,6 +47,7 @@ val testVersion : String by project
 val jgitVersion : String by project
 val jacksonVersion : String by project
 val fuelVersion : String by project
+val githubVersion : String by project
 dependencies {
     // Version Plugin
     implementation("org.eclipse.jgit:org.eclipse.jgit:${jgitVersion}")
@@ -56,6 +61,9 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-parameter-names:${jacksonVersion}")
     implementation("com.github.kittinunf.fuel:fuel:${fuelVersion}")
     implementation("com.github.kittinunf.fuel:fuel-jackson:${fuelVersion}")
+
+    // Github Plugin
+    implementation("org.kohsuke:github-api:${githubVersion}")
 
     testImplementation(gradleApi())
     testImplementation(gradleTestKit())
