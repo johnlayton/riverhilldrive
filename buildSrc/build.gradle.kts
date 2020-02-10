@@ -12,43 +12,50 @@ gradlePlugin {
             id = "test"
             implementationClass = "au.com.mebank.TestPlugin"
         }
-    }
-    plugins {
         register("plugin-wsdl") {
             id = "plugin-wsdl"
             implementationClass = "au.com.mebank.integration.WsdlPlugin"
         }
-    }
-    plugins {
         register("plugin-version") {
             id = "plugin-version"
             implementationClass = "au.com.mebank.integration.VersionPlugin"
         }
-    }
-    plugins {
         register("plugin-group") {
             id = "plugin-group"
             implementationClass = "au.com.mebank.integration.GroupPlugin"
         }
-    }
-    plugins {
         register("plugin-utils") {
             id = "plugin-utils"
             implementationClass = "au.com.mebank.integration.UtilsPlugin"
         }
-    }
-    plugins {
         register("plugin-testing") {
             id = "plugin-testing"
             implementationClass = "au.com.mebank.integration.TestingPlugin"
+        }
+        register("plugin-bitbucket") {
+            id = "plugin-bitbucket"
+            implementationClass = "au.com.mebank.integration.BitbucketPlugin"
         }
     }
 }
 
 val testVersion : String by project
 val jgitVersion : String by project
+val jacksonVersion : String by project
+val fuelVersion : String by project
 dependencies {
+    // Version Plugin
     implementation("org.eclipse.jgit:org.eclipse.jgit:${jgitVersion}")
+
+    // Bitbucket Plugin
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.core:jackson-core:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:${jacksonVersion}")
+    implementation("com.fasterxml.jackson.module:jackson-module-parameter-names:${jacksonVersion}")
+    implementation("com.github.kittinunf.fuel:fuel:${fuelVersion}")
+    implementation("com.github.kittinunf.fuel:fuel-jackson:${fuelVersion}")
 
     testImplementation(gradleApi())
     testImplementation(gradleTestKit())
