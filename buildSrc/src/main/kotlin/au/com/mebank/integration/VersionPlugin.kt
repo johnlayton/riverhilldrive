@@ -13,7 +13,7 @@ class VersionPlugin : Plugin<Project> {
   open class ShowVersion : DefaultTask() {
 
     init {
-      group = "Other"
+      group = "Version"
       description = "Show the project version"
     }
 

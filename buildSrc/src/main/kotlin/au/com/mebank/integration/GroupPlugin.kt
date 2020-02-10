@@ -13,7 +13,7 @@ class GroupPlugin : Plugin<Project> {
   open class ShowGroup : DefaultTask() {
 
     init {
-      group = "Other"
+      group = "Group"
       description = "Show the project group"
     }
 
