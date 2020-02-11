@@ -39,6 +39,7 @@ wsdlToJava {
     wsdls {
         register("demo") {
             wsdl.set(file("${projectDir}/src/demo/resources/demo.wsdl"))
+//            http://localhost:8092/service/demo?wsdl
 //            pkgs.put("http://mebank.com.au/service", "au.com.mebank.integration.service.api")
 //            pkgs.put("tns", "au.com.mebank.integration.service.api")
         }
