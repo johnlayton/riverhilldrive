@@ -55,7 +55,7 @@ class GithubPlugin : Plugin<Project> {
     @TaskAction
     fun action() {
       logger.lifecycle("===============================================================")
-      logger.lifecycle("Repositories ... ")
+      logger.lifecycle(" == Repositories ... ")
 
 //      val github = GitHubBuilder().withOAuthToken("...").build();
       val github = GitHubBuilder.fromEnvironment().build();
