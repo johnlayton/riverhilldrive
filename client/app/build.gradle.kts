@@ -10,6 +10,7 @@ plugins {
     id("io.spring.dependency-management")
 
     id("plugin-testing")
+    id("plugin-github")
 }
 
 dependencies {
