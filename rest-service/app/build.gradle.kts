@@ -17,14 +17,9 @@ plugins {
 }
 
 
-val apacheCXFVersion: String by project
-val javaxXmlVersion: String by project
-val sunXmlVersion: String by project
-val javaxActivation: String by project
-
 dependencies {
 
-    implementation(project(":soap-service:model"))
+    implementation(project(":rest-service:model"))
 
     kapt ("org.springframework.boot:spring-boot-configuration-processor:+")
 
@@ -33,19 +28,19 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    implementation("org.apache.cxf:cxf-spring-boot-starter-jaxws:${apacheCXFVersion}")
-    implementation("org.springframework.ws:spring-ws-core")
-    implementation("javax.xml.ws:jaxws-api:2.3.1")
-    implementation("javax.jws:jsr181-api:1.0-MR1")
-
-    implementation ("org.apache.cxf:cxf-rt-frontend-jaxws:${apacheCXFVersion}")
-    implementation ("org.apache.cxf:cxf-rt-features-logging:${apacheCXFVersion}")
-
-    implementation("javax.xml.bind:jaxb-api:${javaxXmlVersion}")
-    implementation("javax.xml.ws:jaxws-api:${javaxXmlVersion}")
-    implementation("com.sun.xml.bind:jaxb-core:${sunXmlVersion}")
-    implementation("com.sun.xml.bind:jaxb-impl:${sunXmlVersion}")
-    implementation("javax.activation:activation:${javaxActivation}")
+//    implementation("org.apache.cxf:cxf-spring-boot-starter-jaxws:${apacheCXFVersion}")
+//    implementation("org.springframework.ws:spring-ws-core")
+//    implementation("javax.xml.ws:jaxws-api:2.3.1")
+//    implementation("javax.jws:jsr181-api:1.0-MR1")
+//
+//    implementation ("org.apache.cxf:cxf-rt-frontend-jaxws:${apacheCXFVersion}")
+//    implementation ("org.apache.cxf:cxf-rt-features-logging:${apacheCXFVersion}")
+//
+//    implementation("javax.xml.bind:jaxb-api:${javaxXmlVersion}")
+//    implementation("javax.xml.ws:jaxws-api:${javaxXmlVersion}")
+//    implementation("com.sun.xml.bind:jaxb-core:${sunXmlVersion}")
+//    implementation("com.sun.xml.bind:jaxb-impl:${sunXmlVersion}")
+//    implementation("javax.activation:activation:${javaxActivation}")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
@@ -76,7 +71,7 @@ publishing {
 
 jib {
     to {
-        image = "johnlayton/riverhilldrive-soap-service"
+        image = "johnlayton/riverhilldrive-rest-service"
         credHelper = "osxkeychain"
     }
 }

@@ -6,7 +6,7 @@ server:
 
 logging:
   level:
-    root: ERROR
+    root: INFO
     org.springframework.web: DEBUG
     au.com.mebank.service: DEBUG
     au.com.mebank.service.handler: DEBUG

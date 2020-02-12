@@ -1,8 +1,8 @@
 package au.com.mebank.client
 
 import au.com.mebank.client.app.model.InputResponse
-//import au.com.mebank.service.sal.config.ClientConfig
-//import au.com.mebank.service.sal.config.ClientProperties
+//import au.com.mebank.soap.service.sal.config.ClientConfig
+//import au.com.mebank.soap.service.sal.config.ClientProperties
 import com.github.tomakehurst.wiremock.client.WireMock
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
@@ -32,7 +32,7 @@ class MeDockerComposeContainer(file: File) : DockerComposeContainer<MeDockerComp
     SpringExtension::class
 )
 //@ConfigurationPropertiesScan(
-//    "au.com.mebank.service.app.config"
+//    "au.com.mebank.soap.service.app.config"
 //)
 @SpringBootTest(
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,

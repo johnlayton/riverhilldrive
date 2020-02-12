@@ -12,11 +12,13 @@ plugins {
   id("plugin-version")
 }
 
+
+val springVersion :String by project
 dependencies {
-  kapt("org.springframework.boot:spring-boot-configuration-processor:+")
+  kapt("org.springframework.boot:spring-boot-configuration-processor:${springVersion}")
   api(project(path = ":soap-service:api"))
 //  api("au.com.mebank.integration:api:+")
-  implementation("org.springframework.boot:spring-boot-starter-webflux:+")
+  implementation("org.springframework.boot:spring-boot-starter-webflux:${springVersion}")
 }
 
 kapt {

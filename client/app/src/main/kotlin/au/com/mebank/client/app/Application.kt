@@ -20,7 +20,7 @@ import org.springframework.context.annotation.ComponentScans
     ComponentScan("au.com.mebank.service.sal"),
     ComponentScan("au.com.mebank.service.api")
 //    ,
-//    ComponentScan("au.com.mebank.service")
+//    ComponentScan("au.com.mebank.soap.service")
 )
 class Application {
   private val log = LoggerFactory.getLogger(Application::class.java)

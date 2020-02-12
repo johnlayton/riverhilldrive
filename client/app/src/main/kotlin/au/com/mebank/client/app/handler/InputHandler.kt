@@ -2,8 +2,8 @@ package au.com.mebank.client.app.handler
 
 import au.com.mebank.client.app.model.InputRequest
 import au.com.mebank.client.app.model.InputResponse
-import au.com.mebank.service.sal.client.DemoClient
-import au.com.mebank.service.sal.model.DemoRequest
+import au.com.mebank.soap.service.sal.client.DemoClient
+import au.com.mebank.soap.service.sal.model.DemoRequest
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component

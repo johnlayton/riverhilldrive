@@ -23,9 +23,10 @@ include(
     "soap-service:api",
     "soap-service:sal",
 
-//    "rest-service:model",
-//    "rest-service:sal",
-//    "rest-service:app",
+    "rest-service:model",
+    "rest-service:app",
+    "rest-service:api",
+    "rest-service:sal",
 //
 //    "grpc-service:model",
 //    "grpc-service:sal",

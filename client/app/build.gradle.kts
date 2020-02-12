@@ -16,20 +16,10 @@ plugins {
 dependencies {
 
     implementation(project(path = ":soap-service:sal"))
-//    implementation(project(":rest-service:sal"))
-//    implementation(project(":rest-service:model"))
-//    implementation(project(":grpc-service:sal"))
-//    implementation(project(":grpc-service:model"))
+    implementation(project(path = ":rest-service:sal"))
 
-//    implementation("au.com.mebank.demo.service:sal:+")
-//    implementation("au.com.mebank.demo.service:model:+")
-
-//    compileOnly ("org.springframework.boot:spring-boot-configuration-processor")
     kapt ("org.springframework.boot:spring-boot-configuration-processor:+")
-//    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor:+")
-//    implementation ("org.springframework.boot:spring-boot-configuration-processor:+")
 
-//    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("io.micrometer:micrometer-registry-prometheus")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -37,8 +27,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-//    implementation("io.projectreactor:reactor-core:3.2.11.RELEASE")
-//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
@@ -51,12 +39,5 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("io.projectreactor.kotlin:reactor-kotlin-extensions:1.0.1.RELEASE")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
-//    testImplementation("org.testcontainers:testcontainers:1.10.6")
-//    testImplementation("org.testcontainers:junit-jupiter:1.10.6")
-//    testImplementation("org.testcontainers:selenium:1.10.6")
-//
-//    contractTestImplementation("org.testcontainers:testcontainers:1.10.6")
-//    contractTestImplementation("org.testcontainers:junit-jupiter:1.10.6")
-//    contractTestImplementation("org.testcontainers:selenium:1.10.6")
 }
 
