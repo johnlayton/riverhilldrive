@@ -16,9 +16,14 @@ plugins {
     id("maven-publish")
 }
 
+repositories {
+    maven("http://oss.jfrog.org/artifactory/oss-snapshot-local/")
+}
 
+val springfoxVersion : String by project
 dependencies {
 
+    implementation(project(":rest-service:api"))
     implementation(project(":rest-service:model"))
 
     kapt ("org.springframework.boot:spring-boot-configuration-processor:+")
@@ -27,6 +32,10 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    implementation("io.springfox:springfox-swagger2:${springfoxVersion}")
+    implementation("io.springfox:springfox-swagger-ui:${springfoxVersion}")
+    implementation("io.springfox:springfox-spring-webflux:${springfoxVersion}")
 
 //    implementation("org.apache.cxf:cxf-spring-boot-starter-jaxws:${apacheCXFVersion}")
 //    implementation("org.springframework.ws:spring-ws-core")

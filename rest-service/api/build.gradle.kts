@@ -13,7 +13,7 @@ plugins {
 //    id("integration")
     id("plugin-group")
     id("plugin-version")
-    id("plugin-wsdl")
+//    id("plugin-wsdl")
     id("plugin-utils")
 }
 
@@ -29,7 +29,7 @@ configure<WsdlToJavaExtension> {
 }
 */
 
-wsdlToJava {
+/*wsdlToJava {
 
     logger.info("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     logger.info("++ Configure the WSDL Plugin")
@@ -44,7 +44,7 @@ wsdlToJava {
 //            pkgs.put("tns", "au.com.mebank.integration.service.api")
         }
     }
-}
+}*/
 
 
 publishing {

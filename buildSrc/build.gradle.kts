@@ -16,6 +16,10 @@ gradlePlugin {
             id = "plugin-wsdl"
             implementationClass = "au.com.mebank.integration.WsdlPlugin"
         }
+        register("plugin-openapi") {
+            id = "plugin-openapi"
+            implementationClass = "au.com.mebank.integration.OpenApiPlugin"
+        }
         register("plugin-version") {
             id = "plugin-version"
             implementationClass = "au.com.mebank.integration.VersionPlugin"
