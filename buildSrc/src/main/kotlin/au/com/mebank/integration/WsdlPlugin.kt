@@ -18,12 +18,9 @@ import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.api.tasks.TaskAction
-import org.gradle.api.tasks.bundling.Jar
 import org.gradle.kotlin.dsl.container
 import org.gradle.kotlin.dsl.create
-import org.gradle.kotlin.dsl.listProperty
 import org.gradle.kotlin.dsl.mapProperty
-import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.named
 import org.gradle.kotlin.dsl.property
 import org.gradle.kotlin.dsl.register

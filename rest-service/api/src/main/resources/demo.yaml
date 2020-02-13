@@ -9,7 +9,7 @@ paths:
     post:
       summary: Demo Service
       operationId: demo
-      parameters:
+#      parameters:
 #        - in: header
 #          name: Accept-Version
 #          description: Version of the API to use

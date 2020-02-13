@@ -15,7 +15,12 @@ plugins {
     id("plugin-version")
 //    id("plugin-wsdl")
     id("plugin-utils")
+
+
+    id("org.openapi.generator") version "4.2.3"
 }
+
+//classpath("org.openapitools:openapi-generator-gradle-plugin:4.1.1")
 
 /*
 configure<WsdlToJavaExtension> {
@@ -46,6 +51,20 @@ configure<WsdlToJavaExtension> {
     }
 }*/
 
+openApiGenerate {
+    generatorName.set("kotlin")
+    inputSpec.set("$projectDir/src/main/resources/demo.yaml")
+    outputDir.set("$buildDir/generated")
+    apiPackage.set("au.com.mebank.rest.service.api")
+    invokerPackage.set("au.com.mebank.rest.service.invoker")
+    modelPackage.set("au.com.mebank.rest.service.model")
+//    modelFilesConstrainedTo = [
+//        "Error"
+//    ]
+//    configOptions = [
+//        dateLibrary: "java8"
+//    ]
+}
 
 publishing {
     publications {

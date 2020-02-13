@@ -52,6 +52,7 @@ val jgitVersion : String by project
 val jacksonVersion : String by project
 val fuelVersion : String by project
 val githubVersion : String by project
+val openapiVersion : String by project
 dependencies {
     // Version Plugin
     implementation("org.eclipse.jgit:org.eclipse.jgit:${jgitVersion}")
@@ -68,6 +69,9 @@ dependencies {
 
     // Github Plugin
     implementation("org.kohsuke:github-api:${githubVersion}")
+
+    // OpenApi
+    implementation("org.openapitools:openapi-generator:${openapiVersion}")
 
     testImplementation(gradleApi())
     testImplementation(gradleTestKit())
