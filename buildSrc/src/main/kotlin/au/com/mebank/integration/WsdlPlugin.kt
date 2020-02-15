@@ -393,12 +393,17 @@ class WsdlPlugin : Plugin<Project> {
           dependsOn(generateTask)
         }
 
+        tasks.named("compileKotlin") {
+          dependsOn(generateTask)
+        }
 
 /*
         val compileJava = tasks.named("compile${taskName}Java") {
           dependsOn(generateTask)
         }
 
+*/
+/*
         val compileKotlin = tasks.named("compile${taskName}Kotlin") {
           dependsOn(generateTask)
         }

@@ -12,13 +12,13 @@ import org.springframework.context.annotation.ComponentScans
 @SpringBootApplication
 @EnableConfigurationProperties
 @ConfigurationPropertiesScan(
-    "au.com.mebank.service.sal.config"
+    "au.com.mebank.soap.service.sal.config"
 )
 @ComponentScans(
     ComponentScan("au.com.mebank.client.app.handler"),
     ComponentScan("au.com.mebank.client.app.router"),
-    ComponentScan("au.com.mebank.service.sal"),
-    ComponentScan("au.com.mebank.service.api")
+    ComponentScan("au.com.mebank.soap.service.sal"),
+    ComponentScan("au.com.mebank.soap.service.api")
 //    ,
 //    ComponentScan("au.com.mebank.soap.service")
 )
