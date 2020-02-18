@@ -68,7 +68,7 @@ dependencies {
     testImplementation(junitJupiterAll)
 */
 
-//    testImplementation(reactorTest)
+    testImplementation(reactorTest())
 //    implementation(mebankSpringDeps)
 
 //    testImplementation("io.projectreactor:reactor-test")

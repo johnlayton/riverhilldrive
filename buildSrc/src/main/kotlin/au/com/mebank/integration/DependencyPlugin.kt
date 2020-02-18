@@ -72,9 +72,9 @@ open class DependencyPlugin : Plugin<Project> {
 
 //    (project.dependencies as ExtensionAware).extensions
     dependencies.extensions
-        .add(typeOf<() -> ExternalModuleDependency>(), "reactorTest", reactorTest)
-    dependencies.extensions
         .add(typeOf<(String) -> ExternalModuleDependency>(), "junitJupiter", junitJupiter)
+    dependencies.extensions
+        .add(typeOf<() -> ExternalModuleDependency>(), "reactorTest", reactorTest)
     dependencies.extensions
         .add(typeOf<() -> List<ExternalModuleDependency>>(), "junitJupiterAll", junitJupiterAll)
   }
