@@ -44,6 +44,10 @@ gradlePlugin {
             id = "plugin-github"
             implementationClass = "au.com.mebank.integration.GithubPlugin"
         }
+        register("plugin-dependency") {
+            id = "plugin-dependency"
+            implementationClass = "au.com.mebank.integration.DependencyPlugin"
+        }
     }
 }
 
