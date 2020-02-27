@@ -49,9 +49,7 @@ class WsdlPlugin : Plugin<Project> {
 //    val pkg = objects.property<String>().convention("")
 //  }
 
-  open class WsdlExtension
-  @Inject
-  constructor(objects: ObjectFactory, private val name: String) : Named {
+  open class WsdlExtension @Inject constructor(objects: ObjectFactory, private val name: String) : Named {
 
     override fun getName(): String {
       return name
@@ -262,8 +260,8 @@ class WsdlPlugin : Plugin<Project> {
 
   override fun apply(project: Project): Unit = project.run {
 
-    if (!plugins.hasPlugin("java")) {
-      plugins.apply("java")
+    if (!plugins.hasPlugin("java-library")) {
+      plugins.apply("java-library")
     }
 
     val templateTask = tasks.register<TemplateTask>("${EXTENSION_NAME}Template") {
@@ -420,8 +418,8 @@ class WsdlPlugin : Plugin<Project> {
   }
 }
 
-internal fun Project.wsdlToJava(): NamedDomainObjectContainer<WsdlPlugin.WsdlExtension> =
+internal fun Project.wsdlToJava(): NamedDomainObjectContainer<WsdlPlugin.WsdlToJavaExtension> =
     @Suppress("UNCHECKED_CAST")
-    extensions.getByName(WsdlPlugin.EXTENSION_NAME) as? NamedDomainObjectContainer<WsdlPlugin.WsdlExtension>
+    extensions.getByName(WsdlPlugin.EXTENSION_NAME) as? NamedDomainObjectContainer<WsdlPlugin.WsdlToJavaExtension>
         ?: throw IllegalStateException("${WsdlPlugin.EXTENSION_NAME} is not of the correct type")
 

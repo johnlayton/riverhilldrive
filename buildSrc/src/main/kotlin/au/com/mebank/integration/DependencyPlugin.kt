@@ -31,6 +31,8 @@ open class DependencyPlugin : Plugin<Project> {
       )
     }
 
+//    dependencies.add()
+
 //    fun DependencyHandlerScope.addJupiterTestLibs(dependencies: List<ExternalModuleDependency>) {
 //      junitJupiterAll().forEach {
 //        add("testImplementation", it)

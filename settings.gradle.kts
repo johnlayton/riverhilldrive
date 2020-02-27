@@ -12,10 +12,17 @@ pluginManagement {
                 useModule("com.google.protobuf:protobuf-gradle-plugin:${requested.version}")
             }
         }
+
     }
 }
 
-//rootProject.name = "riverhilldrive"
+//configurations.all {
+//    resolutionStrategy {
+//        force 'com.google.guava:guava:23.6.1-jre'
+//    }
+//}
+
+rootProject.name = "riverhilldrive"
 
 include(
     "soap-service:model",
@@ -26,11 +33,11 @@ include(
     "rest-service:model",
     "rest-service:app",
     "rest-service:api",
-    "rest-service:sal",
+    "rest-service:sal"
 //
 //    "grpc-service:model",
 //    "grpc-service:sal",
 //    "grpc-service:app",
 
-    "client:app"
+//    "client:app"
 )

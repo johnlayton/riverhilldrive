@@ -1,5 +1,32 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+buildscript {
+    dependencies {
+        classpath("com.google.guava:guava:28.1-jre")
+    }
+    configurations {
+        classpath {
+            resolutionStrategy {
+                cacheChangingModulesFor(0, "seconds")
+                eachDependency {
+                    when (Pair(requested.group, requested.name)) {
+                        Pair("com.google.guava" , "guava") -> {
+                            logger.lifecycle("============================")
+                            logger.lifecycle("= Found guava ${requested}")
+                            logger.lifecycle("============================")
+                            useVersion("28.1-jre")
+                        }
+                    }
+//      when (requested.group) {
+//        "org.jetbrains.kotlin" -> useVersion(kotlinVersion)
+//      }
+                }
+//        force("com.google.guava:guava:28.2-jre")
+            }
+        }
+    }
+}
+
 plugins {
     id("java")
 
@@ -38,14 +65,14 @@ dependencies {
     implementation("javax.xml.ws:jaxws-api:2.3.1")
     implementation("javax.jws:jsr181-api:1.0-MR1")
 
-    implementation ("org.apache.cxf:cxf-rt-frontend-jaxws:${apacheCXFVersion}")
-    implementation ("org.apache.cxf:cxf-rt-features-logging:${apacheCXFVersion}")
-
-    implementation("javax.xml.bind:jaxb-api:${javaxXmlVersion}")
-    implementation("javax.xml.ws:jaxws-api:${javaxXmlVersion}")
-    implementation("com.sun.xml.bind:jaxb-core:${sunXmlVersion}")
-    implementation("com.sun.xml.bind:jaxb-impl:${sunXmlVersion}")
-    implementation("javax.activation:activation:${javaxActivation}")
+//    implementation ("org.apache.cxf:cxf-rt-frontend-jaxws:${apacheCXFVersion}")
+//    implementation ("org.apache.cxf:cxf-rt-features-logging:${apacheCXFVersion}")
+//
+//    implementation("javax.xml.bind:jaxb-api:${javaxXmlVersion}")
+//    implementation("javax.xml.ws:jaxws-api:${javaxXmlVersion}")
+//    implementation("com.sun.xml.bind:jaxb-core:${sunXmlVersion}")
+//    implementation("com.sun.xml.bind:jaxb-impl:${sunXmlVersion}")
+//    implementation("javax.activation:activation:${javaxActivation}")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
