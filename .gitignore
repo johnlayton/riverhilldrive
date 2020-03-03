@@ -8,8 +8,4 @@
 
 build/
 
-## Generated Code
-
-soap-service/api/src/demo/java/
-rest-service/api/src/demo/java/
 
