@@ -32,6 +32,7 @@ import java.util.UUID
 import javax.inject.Inject
 
 
+@Suppress("UnstableApiUsage")
 class WsdlPlugin : Plugin<Project> {
 
   companion object {
@@ -338,9 +339,8 @@ class WsdlPlugin : Plugin<Project> {
 
         test.compileClasspath += wsdlSourceSet.output // + wsdlToJavaConfiguration
         test.runtimeClasspath += wsdlSourceSet.output // + wsdlToJavaConfiguration
-*/
 
-/*
+
         configurations.named(wsdlSourceSet.apiConfigurationName) {
           extendsFrom(wsdlToJavaConfiguration)
         }
@@ -414,8 +414,8 @@ class WsdlPlugin : Plugin<Project> {
   }
 }
 
+@Suppress("UNCHECKED_CAST")
 internal fun Project.wsdlToJava(): NamedDomainObjectContainer<WsdlPlugin.WsdlToJavaExtension> =
-    @Suppress("UNCHECKED_CAST")
     extensions.getByName(WsdlPlugin.EXTENSION_NAME) as? NamedDomainObjectContainer<WsdlPlugin.WsdlToJavaExtension>
         ?: throw IllegalStateException("${WsdlPlugin.EXTENSION_NAME} is not of the correct type")
 

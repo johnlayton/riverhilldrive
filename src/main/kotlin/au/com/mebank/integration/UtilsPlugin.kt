@@ -36,6 +36,7 @@ class UtilsPlugin : Plugin<Project> {
         logger.lifecycle("========================================================================")
         configurations.all {
           logger.lifecycle("Configuration : ${name}")
+
           allDependencies.forEach {
             logger.lifecycle("          Dep : ${it.group}:${it.name}:${it.version}")
           }
