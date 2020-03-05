@@ -93,3 +93,13 @@ publishing {
         mavenLocal()
     }
 }
+
+tasks {
+    register("showVersion") {
+        project.run {
+            logger.lifecycle("========================================================================")
+            logger.lifecycle("Project Version : ${project.version}")
+            logger.lifecycle("========================================================================")
+        }
+    }
+}
