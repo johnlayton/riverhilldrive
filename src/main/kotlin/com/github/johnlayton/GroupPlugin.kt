@@ -42,20 +42,13 @@ class GroupPlugin : Plugin<Project> {
 /*
     val groupExtension = extensions.create(EXTENSION_NAME, GroupExtension::class)
 */
-
-    project.group = if (project.subprojects.isEmpty()) {
-      "com.github.johnlayton"
-    } else {
-      "com.github.johnlayton.${project.rootDir.name}"
-    }
-
+    project.setGroup("com.github.johnlayton" + suffix(this))
     tasks.register<ShowGroup>("showGroup")
 
   }
+
+  private fun suffix(project: Project, suffix: String = ""): String = project.parent?.let { parent ->
+    suffix(parent, ".${parent.name}${suffix}")
+  } ?: suffix
+
 }
-
-//internal fun Project.is(): NamedDomainObjectContainer<WsdlPlugin.WsdlExtension> =
-//    @Suppress("UNCHECKED_CAST")
-//    extensions.getByName(WsdlPlugin.EXTENSION_NAME) as? NamedDomainObjectContainer<WsdlPlugin.WsdlExtension>
-//        ?: throw IllegalStateException("${WsdlPlugin.EXTENSION_NAME} is not of the correct type")
-
