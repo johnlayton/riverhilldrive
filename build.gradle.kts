@@ -14,45 +14,41 @@ version = Git.open(project.rootDir).describe().setAlways(true).call()
 
 gradlePlugin {
     plugins {
-        create("test") {
-            id = "test"
-            implementationClass = "au.com.mebank.TestPlugin"
-        }
         register("plugin-wsdl") {
             id = "plugin-wsdl"
-            implementationClass = "au.com.mebank.integration.WsdlPlugin"
+            implementationClass = "com.github.johnlayton.WsdlPlugin"
         }
         register("plugin-openapi") {
             id = "plugin-openapi"
-            implementationClass = "au.com.mebank.integration.OpenApiPlugin"
+            implementationClass = "com.github.johnlayton.OpenApiPlugin"
         }
         register("plugin-version") {
             id = "plugin-version"
-            implementationClass = "au.com.mebank.integration.VersionPlugin"
+            implementationClass = "com.github.johnlayton.VersionPlugin"
         }
         register("plugin-group") {
             id = "plugin-group"
-            implementationClass = "au.com.mebank.integration.GroupPlugin"
+            implementationClass = "com.github.johnlayton.GroupPlugin"
         }
         register("plugin-utils") {
             id = "plugin-utils"
-            implementationClass = "au.com.mebank.integration.UtilsPlugin"
+            implementationClass = "com.github.johnlayton.UtilsPlugin"
         }
         register("plugin-testing") {
             id = "plugin-testing"
-            implementationClass = "au.com.mebank.integration.TestingPlugin"
+            implementationClass = "com.github.johnlayton.TestingPlugin"
         }
         register("plugin-bitbucket") {
             id = "plugin-bitbucket"
-            implementationClass = "au.com.mebank.integration.BitbucketPlugin"
+            implementationClass = "com.github.johnlayton.BitbucketPlugin"
         }
         register("plugin-github") {
             id = "plugin-github"
-            implementationClass = "au.com.mebank.integration.GithubPlugin"
+            implementationClass = "com.github.johnlayton.GithubPlugin"
         }
         register("plugin-dependency") {
             id = "plugin-dependency"
-            implementationClass = "au.com.mebank.integration.DependencyPlugin"
+            implementationClass = "com.github.johnlayton.DependencyPlugin"
         }
     }
 }
