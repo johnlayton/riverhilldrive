@@ -9,7 +9,7 @@ repositories {
     jcenter()
 }
 
-setGroup("au.com.mebank.integration")
+setGroup("com.github.johnlayton")
 version = Git.open(project.rootDir).describe().setAlways(true).call()
 
 gradlePlugin {

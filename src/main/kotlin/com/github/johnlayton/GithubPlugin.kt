@@ -1,4 +1,4 @@
-package au.com.mebank.integration
+package com.github.johnlayton
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.Plugin
@@ -70,7 +70,8 @@ class GithubPlugin : Plugin<Project> {
 
   override fun apply(project: Project): Unit = project.run {
 
-    val githubExtension = extensions.create<GithubExtension>(EXTENSION_NAME, project)
+    val githubExtension = extensions.create<GithubExtension>(
+        EXTENSION_NAME, project)
 
 /*
     val github = GitHubBuilder().withAppInstallationToken("my_installation_token").build()

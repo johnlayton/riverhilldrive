@@ -1,4 +1,4 @@
-package au.com.mebank.integration
+package com.github.johnlayton
 
 import io.kotlintest.shouldNotBe
 import io.kotlintest.specs.WordSpec

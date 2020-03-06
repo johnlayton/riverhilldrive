@@ -1,4 +1,4 @@
-package au.com.mebank.integration
+package com.github.johnlayton
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.Plugin
@@ -7,6 +7,18 @@ import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.register
 
 class GroupPlugin : Plugin<Project> {
+
+/*
+  companion object {
+    const val EXTENSION_NAME = "group"
+  }
+*/
+
+/*
+  open class GroupExtension() {
+    var lastPart = ""
+  }
+*/
 
   open class ShowGroup : DefaultTask() {
 
@@ -27,7 +39,16 @@ class GroupPlugin : Plugin<Project> {
 
   override fun apply(project: Project): Unit = project.run {
 
-    project.group = "au.com.mebank.integration"
+/*
+    val groupExtension = extensions.create(EXTENSION_NAME, GroupExtension::class)
+*/
+
+    project.group = if (project.subprojects.isEmpty()) {
+      "com.github.johnlayton"
+    } else {
+      "com.github.johnlayton.${project.rootDir.name}"
+    }
+
     tasks.register<ShowGroup>("showGroup")
 
   }

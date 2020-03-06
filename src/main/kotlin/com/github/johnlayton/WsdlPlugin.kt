@@ -1,4 +1,4 @@
-package au.com.mebank.integration
+package com.github.johnlayton
 
 import org.gradle.api.Action
 import org.gradle.api.DefaultTask

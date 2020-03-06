@@ -1,4 +1,4 @@
-package au.com.mebank.integration
+package com.github.johnlayton
 
 import org.gradle.api.Action
 import org.gradle.api.Plugin
@@ -28,9 +28,11 @@ class TestingPlugin : Plugin<Project> {
 
     override fun apply(project: Project): Unit = project.run {
         val testingExtension =
-                extensions.create<TestingExtension>(TestingPlugin.EXTENSION_NAME)
+                extensions.create<TestingExtension>(
+                    EXTENSION_NAME)
 
-        val testingConfiguration = configurations.create(TestingPlugin.EXTENSION_NAME + "Tools", {
+        val testingConfiguration = configurations.create(
+            EXTENSION_NAME + "Tools", {
             setTransitive(true)
             setVisible(true)
             defaultDependencies(object : Action<DependencySet> {
