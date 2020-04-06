@@ -46,6 +46,7 @@ wsdlToJava {
         // [1] Optional: Default 2.3.0.1
         sunXmlVersion = "2.3.0.1"
     }
+    // [0..n] Required
     wsdls {
         register("token") {
             // [1] Required

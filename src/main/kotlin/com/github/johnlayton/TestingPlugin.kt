@@ -54,9 +54,11 @@ class TestingPlugin : Plugin<Project> {
 //            extendsFrom(wsdlToJavaConfiguration)
 //        }
 
-        sourceSets.create("integration-test") {
+        sourceSets.create("test-integration") {
             compileClasspath += sourceSets["test"].output + sourceSets["test"].compileClasspath + testingConfiguration
             runtimeClasspath += sourceSets["test"].output + sourceSets["test"].runtimeClasspath + testingConfiguration
         }
+
+
     }
 }
