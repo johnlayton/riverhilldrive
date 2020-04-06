@@ -75,15 +75,18 @@ class WsdlPlugin : Plugin<Project> {
     val validate = objects.property<Boolean>().convention(false)
   }
 
-  open class WsdlToJavaExtension(val wsdls: NamedDomainObjectContainer<WsdlExtension>) {
+  open class ToolVersions(
+      var apacheCXFVersion: String = "3.3.6",
+      var javaxXmlVersion: String = "2.3.1",
+      var javaxActivationVersion: String = "1.1.1",
+      var javaxJwsVersion: String = "1.0-MR1",
+      var sunXmlVersion: String = "2.3.0.1"
+  )
 
-    var apacheCXFVersion = "3.2.12"
-    var javaxXmlVersion = "2.3.1"
-    var javaxActivationVersion = "1.1.1"
-    var javaxJwsVersion = "1.0-MR1"
-    var sunXmlVersion = "2.3.0.1"
-
-  }
+  open class WsdlToJavaExtension(
+      val tools: ToolVersions,
+      val wsdls: NamedDomainObjectContainer<WsdlExtension>
+  )
 
   open class TemplateTask : DefaultTask() {
 
@@ -279,19 +282,21 @@ class WsdlPlugin : Plugin<Project> {
     }
 
     val wsdlToJavaExtension =
-        extensions.create(EXTENSION_NAME, WsdlToJavaExtension::class, container(WsdlExtension::class))
+        extensions.create(EXTENSION_NAME, WsdlToJavaExtension::class,
+            extensions.create("tools", ToolVersions::class),
+            container(WsdlExtension::class))
 
     val wsdlToJavaToolConfiguration = configurations.create(EXTENSION_NAME + "Tools", {
       setTransitive(true)
       setVisible(true)
       defaultDependencies(object : Action<DependencySet> {
         override fun execute(dependencies: DependencySet) {
-          dependencies.add(project.dependencies.create("org.apache.cxf:cxf-tools-wsdlto-core:${wsdlToJavaExtension.apacheCXFVersion}"))
-          dependencies.add(project.dependencies.create("org.apache.cxf:cxf-tools-wsdlto-frontend-jaxws:${wsdlToJavaExtension.apacheCXFVersion}"))
-          dependencies.add(project.dependencies.create("org.apache.cxf:cxf-tools-wsdlto-databinding-jaxb:${wsdlToJavaExtension.apacheCXFVersion}"))
-          dependencies.add(project.dependencies.create("javax.xml.bind:jaxb-api:${wsdlToJavaExtension.javaxXmlVersion}"))
-          dependencies.add(project.dependencies.create("javax.xml.ws:jaxws-api:${wsdlToJavaExtension.javaxXmlVersion}"))
-          dependencies.add(project.dependencies.create("javax.jws:jsr181-api:${wsdlToJavaExtension.javaxJwsVersion}"))
+          dependencies.add(project.dependencies.create("org.apache.cxf:cxf-tools-wsdlto-core:${wsdlToJavaExtension.tools.apacheCXFVersion}"))
+          dependencies.add(project.dependencies.create("org.apache.cxf:cxf-tools-wsdlto-frontend-jaxws:${wsdlToJavaExtension.tools.apacheCXFVersion}"))
+          dependencies.add(project.dependencies.create("org.apache.cxf:cxf-tools-wsdlto-databinding-jaxb:${wsdlToJavaExtension.tools.apacheCXFVersion}"))
+          dependencies.add(project.dependencies.create("javax.xml.bind:jaxb-api:${wsdlToJavaExtension.tools.javaxXmlVersion}"))
+          dependencies.add(project.dependencies.create("javax.xml.ws:jaxws-api:${wsdlToJavaExtension.tools.javaxXmlVersion}"))
+          dependencies.add(project.dependencies.create("javax.jws:jsr181-api:${wsdlToJavaExtension.tools.javaxJwsVersion}"))
         }
       })
     })
@@ -301,16 +306,16 @@ class WsdlPlugin : Plugin<Project> {
       setVisible(true)
       defaultDependencies(object : Action<DependencySet> {
         override fun execute(dependencySet: DependencySet) {
-          dependencySet.add(project.dependencies.create("org.apache.cxf:cxf-spring-boot-starter-jaxws:${wsdlToJavaExtension.apacheCXFVersion}"))
-          dependencySet.add(project.dependencies.create("org.apache.cxf:cxf-rt-frontend-jaxws:${wsdlToJavaExtension.apacheCXFVersion}"))
-          dependencySet.add(project.dependencies.create("org.apache.cxf:cxf-rt-transports-http:${wsdlToJavaExtension.apacheCXFVersion}"))
-          dependencySet.add(project.dependencies.create("org.apache.cxf:cxf-rt-features-logging:${wsdlToJavaExtension.apacheCXFVersion}"))
-          dependencySet.add(project.dependencies.create("javax.xml.bind:jaxb-api:${wsdlToJavaExtension.javaxXmlVersion}"))
-          dependencySet.add(project.dependencies.create("javax.xml.ws:jaxws-api:${wsdlToJavaExtension.javaxXmlVersion}"))
-          dependencySet.add(project.dependencies.create("com.sun.xml.bind:jaxb-core:${wsdlToJavaExtension.sunXmlVersion}"))
-          dependencySet.add(project.dependencies.create("com.sun.xml.bind:jaxb-impl:${wsdlToJavaExtension.sunXmlVersion}"))
-          dependencySet.add(project.dependencies.create("javax.activation:activation:${wsdlToJavaExtension.javaxActivationVersion}"))
-          dependencySet.add(project.dependencies.create("javax.jws:jsr181-api:${wsdlToJavaExtension.javaxJwsVersion}"))
+          dependencySet.add(project.dependencies.create("org.apache.cxf:cxf-spring-boot-starter-jaxws:${wsdlToJavaExtension.tools.apacheCXFVersion}"))
+          dependencySet.add(project.dependencies.create("org.apache.cxf:cxf-rt-frontend-jaxws:${wsdlToJavaExtension.tools.apacheCXFVersion}"))
+          dependencySet.add(project.dependencies.create("org.apache.cxf:cxf-rt-transports-http:${wsdlToJavaExtension.tools.apacheCXFVersion}"))
+          dependencySet.add(project.dependencies.create("org.apache.cxf:cxf-rt-features-logging:${wsdlToJavaExtension.tools.apacheCXFVersion}"))
+          dependencySet.add(project.dependencies.create("javax.xml.bind:jaxb-api:${wsdlToJavaExtension.tools.javaxXmlVersion}"))
+          dependencySet.add(project.dependencies.create("javax.xml.ws:jaxws-api:${wsdlToJavaExtension.tools.javaxXmlVersion}"))
+          dependencySet.add(project.dependencies.create("com.sun.xml.bind:jaxb-core:${wsdlToJavaExtension.tools.sunXmlVersion}"))
+          dependencySet.add(project.dependencies.create("com.sun.xml.bind:jaxb-impl:${wsdlToJavaExtension.tools.sunXmlVersion}"))
+          dependencySet.add(project.dependencies.create("javax.activation:activation:${wsdlToJavaExtension.tools.javaxActivationVersion}"))
+          dependencySet.add(project.dependencies.create("javax.jws:jsr181-api:${wsdlToJavaExtension.tools.javaxJwsVersion}"))
         }
       })
     })
