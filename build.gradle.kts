@@ -50,6 +50,10 @@ gradlePlugin {
             id = "plugin-dependency"
             implementationClass = "com.github.johnlayton.DependencyPlugin"
         }
+        register("plugin-upgrade") {
+            id = "plugin-upgrade"
+            implementationClass = "com.github.johnlayton.UpgradePlugin"
+        }
     }
 }
 
@@ -59,7 +63,13 @@ val jacksonVersion : String by project
 val fuelVersion : String by project
 val githubVersion : String by project
 val openapiVersion : String by project
+val gradleUtilsVersion : String by project
+val useLatestVersion : String by project
 dependencies {
+    // Upgrade Plugin
+    implementation("gradle.plugin.com.dorkbox", "GradleUtils", gradleUtilsVersion)
+    implementation("se.patrikerdes", "gradle-use-latest-versions-plugin", useLatestVersion)
+
     // Version Plugin
     implementation("org.eclipse.jgit:org.eclipse.jgit:${jgitVersion}")
 
@@ -97,5 +107,13 @@ tasks {
             logger.lifecycle("Project Version : ${project.version}")
             logger.lifecycle("========================================================================")
         }
+    }
+}
+
+val gradleWrapperVersion: String by project
+tasks {
+    wrapper {
+        gradleVersion = gradleWrapperVersion
+        distributionType = Wrapper.DistributionType.ALL
     }
 }
