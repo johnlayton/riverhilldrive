@@ -1,10 +1,7 @@
 package com.github.johnlayton
 
-import io.kotlintest.shouldBe
-import io.kotlintest.shouldNotBe
-import io.kotlintest.specs.WordSpec
-import org.eclipse.jgit.api.Git
-import org.gradle.internal.impldep.org.junit.runner.RunWith
+import io.kotest.core.spec.style.WordSpec
+import io.kotest.matchers.shouldNotBe
 import org.gradle.testfixtures.ProjectBuilder
 
 //@RunWith(TestJUnitRunner::class)
