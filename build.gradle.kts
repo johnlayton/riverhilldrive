@@ -56,7 +56,7 @@ gradlePlugin {
             implementationClass = "com.github.johnlayton.UpgradePlugin"
         }
         register("plugin-libraries") {
-            id = "plugin-upgrade"
+            id = "plugin-libraries"
             implementationClass = "com.github.johnlayton.LibrariesPlugin"
         }
     }
