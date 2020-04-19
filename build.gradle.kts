@@ -55,6 +55,10 @@ gradlePlugin {
             id = "plugin-upgrade"
             implementationClass = "com.github.johnlayton.UpgradePlugin"
         }
+        register("plugin-libraries") {
+            id = "plugin-upgrade"
+            implementationClass = "com.github.johnlayton.LibrariesPlugin"
+        }
     }
 }
 
@@ -66,7 +70,11 @@ val githubVersion : String by project
 val openapiVersion : String by project
 val gradleUtilsVersion : String by project
 val useLatestVersion : String by project
+val gradleLibrariesVersion : String by project
 dependencies {
+    // Libraries Plugin
+    implementation("com.fkorotkov", "gradle-libraries-plugin", gradleLibrariesVersion)
+
     // Upgrade Plugin
     implementation("gradle.plugin.com.dorkbox", "GradleUtils", gradleUtilsVersion)
     implementation("se.patrikerdes", "gradle-use-latest-versions-plugin", useLatestVersion)
