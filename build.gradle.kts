@@ -7,6 +7,7 @@ plugins {
 
 repositories {
     jcenter()
+    gradlePluginPortal()
 }
 
 setGroup("com.github.johnlayton")

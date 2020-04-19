@@ -1,4 +1,4 @@
-package au.com.mebank.integration
+package com.github.johnlayton
 
 import org.gradle.api.Action
 import org.gradle.api.DefaultTask
@@ -84,8 +84,8 @@ class WsdlPlugin : Plugin<Project> {
   )
 
   open class WsdlToJavaExtension(
-      val tools: ToolVersions,
-      val wsdls: NamedDomainObjectContainer<WsdlExtension>
+          val tools: ToolVersions,
+          val wsdls: NamedDomainObjectContainer<WsdlExtension>
   )
 
   open class TemplateTask : DefaultTask() {
@@ -97,7 +97,7 @@ class WsdlPlugin : Plugin<Project> {
 
     @OutputFile
     val template = project.objects.property<File>()
-        .convention(project.file("${project.buildDir}/tmp/${EXTENSION_NAME}/binding.xml"))
+        .convention(project.file("${project.buildDir}/tmp/$EXTENSION_NAME/binding.xml"))
 
     @TaskAction
     fun action() {
@@ -123,11 +123,11 @@ class WsdlPlugin : Plugin<Project> {
 
     @OutputFile
     val bindings = project.objects.property<File>()
-        .convention(project.file("${project.buildDir}/tmp/${EXTENSION_NAME}/${UUID.randomUUID()}.xml"))
+        .convention(project.file("${project.buildDir}/tmp/$EXTENSION_NAME/${UUID.randomUUID()}.xml"))
 
     @InputFile
     val template = project.objects.property<File>()
-        .convention(project.file("${project.buildDir}/tmp/${EXTENSION_NAME}/binding.xml"))
+        .convention(project.file("${project.buildDir}/tmp/$EXTENSION_NAME/binding.xml"))
 
     @InputFile
     val wsdl = project.objects.property<File>()
@@ -362,7 +362,7 @@ class WsdlPlugin : Plugin<Project> {
           logger.info("===============================================")
 
           template.set(wsdlExtension.bind.orElse(templateTask.get().template))
-          bindings.set(file("${buildDir}/tmp/${EXTENSION_NAME}/${wsdlExtension.name}.xml"))
+          bindings.set(file("${buildDir}/tmp/$EXTENSION_NAME/${wsdlExtension.name}.xml"))
           wsdl.set(wsdlExtension.wsdl)
           enableAsyncMapping.set(wsdlExtension.enableAsyncMapping)
           enableWrapperStyle.set(wsdlExtension.enableWrapperStyle)

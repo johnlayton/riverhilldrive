@@ -13,7 +13,7 @@ buildscript {
     maven("https://jitpack.io")
   }
   dependencies {
-    classpath("com.github.johnlayton", "riverhilldrive", "0.0.9")
+    classpath("com.github.johnlayton", "riverhilldrive", "0.0.10")
   }
   configurations {
     classpath {
