@@ -62,7 +62,7 @@ gradlePlugin {
     }
 }
 
-val testVersion : String by project
+val kotlinTestVersion : String by project
 val jgitVersion : String by project
 val jacksonVersion : String by project
 val fuelVersion : String by project
@@ -100,7 +100,10 @@ dependencies {
 
     testImplementation(gradleApi())
     testImplementation(gradleTestKit())
-    testImplementation("io.kotlintest:kotlintest-runner-junit5:${testVersion}")
+
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:${kotlinTestVersion}")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:${kotlinTestVersion}")
+    testImplementation("io.kotest:kotest-property-jvm:${kotlinTestVersion}")
 }
 
 publishing {
@@ -117,6 +120,10 @@ tasks {
             logger.lifecycle("========================================================================")
         }
     }
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
 
 val gradleWrapperVersion: String by project

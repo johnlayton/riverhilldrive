@@ -1,5 +1,6 @@
 package com.github.johnlayton
 
+import com.github.johnlayton.WsdlPlugin.WsdlToJavaExtension
 import org.gradle.api.Action
 import org.gradle.api.DefaultTask
 import org.gradle.api.Named
@@ -30,7 +31,6 @@ import java.io.File
 import java.nio.charset.Charset
 import java.util.UUID
 import javax.inject.Inject
-
 
 @Suppress("UnstableApiUsage")
 class WsdlPlugin : Plugin<Project> {
@@ -418,7 +418,7 @@ class WsdlPlugin : Plugin<Project> {
 }
 
 @Suppress("UNCHECKED_CAST")
-internal fun Project.wsdlToJava(): NamedDomainObjectContainer<WsdlPlugin.WsdlToJavaExtension> =
-    extensions.getByName(WsdlPlugin.EXTENSION_NAME) as? NamedDomainObjectContainer<WsdlPlugin.WsdlToJavaExtension>
+internal fun Project.wsdlToJava(): NamedDomainObjectContainer<WsdlToJavaExtension> =
+    extensions.getByName(WsdlPlugin.EXTENSION_NAME) as? NamedDomainObjectContainer<WsdlToJavaExtension>
         ?: throw IllegalStateException("${WsdlPlugin.EXTENSION_NAME} is not of the correct type")
 
