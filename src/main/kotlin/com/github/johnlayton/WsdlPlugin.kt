@@ -1,4 +1,4 @@
-package com.github.johnlayton
+package au.com.mebank.integration
 
 import org.gradle.api.Action
 import org.gradle.api.DefaultTask
@@ -123,7 +123,7 @@ class WsdlPlugin : Plugin<Project> {
 
     @OutputFile
     val bindings = project.objects.property<File>()
-        .convention(project.file("${project.buildDir}/tmp/${EXTENSION_NAME}/${UUID.randomUUID().toString()}.xml"))
+        .convention(project.file("${project.buildDir}/tmp/${EXTENSION_NAME}/${UUID.randomUUID()}.xml"))
 
     @InputFile
     val template = project.objects.property<File>()
@@ -151,7 +151,8 @@ class WsdlPlugin : Plugin<Project> {
                 .replace(ASYNC_MAPPING_PLACEHOLDER, enableAsyncMapping.get().toString())
             )
         logger.info("================================")
-        logger.info("Created bindings to ${bindings.get().absolutePath}")
+        logger.info("Created bindings to: ${bindings.get().absolutePath}")
+        logger.info("      Wsdl location: ${wsdl.get().absolutePath}")
         logger.info("================================")
         logger.info(bindings.get().readText(Charset.defaultCharset()))
         logger.info("================================")
@@ -333,25 +334,24 @@ class WsdlPlugin : Plugin<Project> {
 
         val taskName = wsdlExtension.name.capitalize()
 
-/*
         val wsdlSourceSet = sourceSets.create(wsdlExtension.name) {
           compileClasspath += wsdlToJavaConfiguration
           runtimeClasspath += wsdlToJavaConfiguration
         }
 
-        main.compileClasspath += wsdlSourceSet.output // + wsdlToJavaConfiguration
-        main.runtimeClasspath += wsdlSourceSet.output // + wsdlToJavaConfiguration
+        main.compileClasspath += wsdlSourceSet.output + wsdlToJavaConfiguration
+        main.runtimeClasspath += wsdlSourceSet.output + wsdlToJavaConfiguration
 
-        test.compileClasspath += wsdlSourceSet.output // + wsdlToJavaConfiguration
-        test.runtimeClasspath += wsdlSourceSet.output // + wsdlToJavaConfiguration
-
+        test.compileClasspath += wsdlSourceSet.output + wsdlToJavaConfiguration
+        test.runtimeClasspath += wsdlSourceSet.output + wsdlToJavaConfiguration
 
         configurations.named(wsdlSourceSet.apiConfigurationName) {
           extendsFrom(wsdlToJavaConfiguration)
         }
-*/
 
+/*
         main.java.srcDirs(file("${projectDir}/src/${wsdlExtension.name}/java"))
+*/
 
         val bindTask = tasks.register<BindingsTask>("${EXTENSION_NAME}Bind${taskName}") {
 
@@ -401,7 +401,6 @@ class WsdlPlugin : Plugin<Project> {
           dependsOn(generateTask)
         }
 
-/*
         tasks.named("compile${taskName}Java") {
           dependsOn(generateTask)
         }
@@ -413,7 +412,6 @@ class WsdlPlugin : Plugin<Project> {
         tasks.named<Jar>("jar") {
           from(wsdlSourceSet.output)
         }
-*/
       }
     })
   }
