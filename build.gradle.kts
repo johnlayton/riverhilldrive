@@ -2,7 +2,9 @@ import org.eclipse.jgit.api.Git
 
 plugins {
     `kotlin-dsl`
-    `maven-publish`
+//    id("kotlin-dsl")
+    id("maven-publish")
+    id("java-gradle-plugin")
 }
 
 repositories {
