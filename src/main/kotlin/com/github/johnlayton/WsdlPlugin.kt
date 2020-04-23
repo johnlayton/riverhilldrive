@@ -321,11 +321,13 @@ class WsdlPlugin : Plugin<Project> {
       })
     })
 
+/*
     val sourceSets = the<SourceSetContainer>()
     val main = sourceSets.getByName("main")
     val test = sourceSets.getByName("test")
+*/
 
-    configurations.named(main.apiConfigurationName) {
+    configurations.named(the<SourceSetContainer>().getByName("main").apiConfigurationName) {
       extendsFrom(wsdlToJavaConfiguration)
     }
 
@@ -334,6 +336,7 @@ class WsdlPlugin : Plugin<Project> {
 
         val taskName = wsdlExtension.name.capitalize()
 
+/*
         val wsdlSourceSet = sourceSets.create(wsdlExtension.name) {
           compileClasspath += wsdlToJavaConfiguration
           runtimeClasspath += wsdlToJavaConfiguration
@@ -348,10 +351,19 @@ class WsdlPlugin : Plugin<Project> {
         configurations.named(wsdlSourceSet.apiConfigurationName) {
           extendsFrom(wsdlToJavaConfiguration)
         }
+*/
 
 /*
         main.java.srcDirs(file("${projectDir}/src/${wsdlExtension.name}/java"))
 */
+        the<SourceSetContainer>().getByName("main") {
+          java {
+            logger.info("===============================================")
+            logger.info("==  Add ${projectDir}/src/${wsdlExtension.name}/java to main src")
+            logger.info("===============================================")
+            srcDirs(file("${projectDir}/src/${wsdlExtension.name}/java"))
+          }
+        }
 
         val bindTask = tasks.register<BindingsTask>("${EXTENSION_NAME}Bind${taskName}") {
 
@@ -401,6 +413,7 @@ class WsdlPlugin : Plugin<Project> {
           dependsOn(generateTask)
         }
 
+/*
         tasks.named("compile${taskName}Java") {
           dependsOn(generateTask)
         }
@@ -412,6 +425,7 @@ class WsdlPlugin : Plugin<Project> {
         tasks.named<Jar>("jar") {
           from(wsdlSourceSet.output)
         }
+*/
       }
     })
   }
