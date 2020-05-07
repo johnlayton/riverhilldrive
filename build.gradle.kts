@@ -65,6 +65,10 @@ gradlePlugin {
             id = "plugin-navigate"
             implementationClass = "com.github.johnlayton.NavigatePlugin"
         }
+        register("plugin-gradle") {
+            id = "plugin-gradle"
+            implementationClass = "com.github.johnlayton.GradlePlugin"
+        }
     }
 }
 
