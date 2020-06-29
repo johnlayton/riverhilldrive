@@ -69,6 +69,10 @@ gradlePlugin {
             id = "plugin-gradle"
             implementationClass = "com.github.johnlayton.GradlePlugin"
         }
+        register("plugin-kibana") {
+            id = "plugin-gradle"
+            implementationClass = "com.github.johnlayton.KibanaPlugin"
+        }
     }
 }
 
